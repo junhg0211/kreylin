@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1d49904-279d-4c4b-8273-24f7aa9f27ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Kreylin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kreylin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Display.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Display.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/HandlerManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/HandlerManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/Quit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/Quit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root_object/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root_object/Terminal.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +112,7 @@
       <workItem from="1567846584936" duration="11731000" />
       <workItem from="1567898107822" duration="2664000" />
       <workItem from="1567928156004" duration="1175000" />
-      <workItem from="1568196852217" duration="2301000" />
+      <workItem from="1568196852217" duration="2793000" />
     </task>
     <servers />
   </component>
