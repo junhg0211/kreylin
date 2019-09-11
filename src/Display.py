@@ -27,10 +27,8 @@ def toggle_full_screen(root_object_manager: RootObjectManager, state_manager: St
 
     if full_screen:
         recorded_size = size
-        size = screen_size()
-        window = pygame.display.set_mode(size, pygame.FULLSCREEN)
+        window = pygame.display.set_mode(screen_size(), pygame.FULLSCREEN)
     else:
         window = pygame.display.set_mode(recorded_size, pygame.RESIZABLE)
-        size = recorded_size
 
     resize_objects(root_object_manager, state_manager)

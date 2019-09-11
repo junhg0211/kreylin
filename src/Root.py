@@ -65,7 +65,10 @@ def handle():
             running = False
         elif event.type == pygame.VIDEORESIZE:
             Display.size = event.dict['size']
-            Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
+            if Display.full_screen:
+                Display.window = pygame.display.set_mode(Display.size, pygame.FULLSCREEN)
+            else:
+                Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
             Display.resize_objects(root_object_manager, state_manager)
         elif event.type == pygame.KEYDOWN:
             keyboard_manager.key_pressed(event.key)
