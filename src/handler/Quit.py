@@ -2,7 +2,7 @@ from sys import platform
 
 import pygame
 
-from handler.Handler import Handler
+from src.handler.Handler import Handler
 
 
 class Quit(Handler):

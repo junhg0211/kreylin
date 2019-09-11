@@ -1,5 +1,5 @@
 PROJECT_NAME = 'Kreylin'
-PROJECT_ICON = './res/icon.png '
+PROJECT_ICON = './res/icon.png'
 
 BACKGROUND_COLOR = (31, 33, 37)
 CIRCLE_COLOR = (253, 222, 89)

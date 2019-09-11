@@ -1,9 +1,9 @@
 import pygame
 
-from handler.HandlerManager import HandlerManager
-from handler.Quit import Quit
 from src import Constants, Display
 from src.Font import Font
+from src.handler.HandlerManager import HandlerManager
+from src.handler.Quit import Quit
 from src.manager.CursorManager import CursorManager
 from src.manager.KeyboardManager import KeyboardManager
 from src.root_object.RootObjectManager import RootObjectManager
@@ -12,7 +12,6 @@ from src.state.Clock import Clock
 from src.state.StateManager import StateManager
 
 running = True
-window = None
 clock = pygame.time.Clock()
 
 # noinspection PyTypeChecker
@@ -53,11 +52,11 @@ def init():
 
     root_object_manager.add(
         Terminal(Constants.TEXT_COLOR, Font(Constants.NANUMSQUARE_REGULAR_FONT, 32, Constants.BACKGROUND_COLOR),
-                 keyboard_manager, state_manager, shutdown, Display.toggle_full_screen))
+                 keyboard_manager, state_manager, root_object_manager, shutdown))
 
 
 def handle():
-    global running, window
+    global running
 
     keyboard_manager.initialize()
     cursor_manager.handle()
@@ -66,9 +65,8 @@ def handle():
             running = False
         elif event.type == pygame.VIDEORESIZE:
             Display.size = event.dict['size']
-            window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
-            root_object_manager.window_resize(*Display.size)
-            state_manager.window_resize(*Display.size)
+            Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
+            Display.resize_objects(root_object_manager, state_manager)
         elif event.type == pygame.KEYDOWN:
             keyboard_manager.key_pressed(event.key)
             keyboard_manager.pressed(event.unicode)
@@ -86,7 +84,7 @@ def tick():
 
 
 def render(surface):
-    window.fill(Constants.BACKGROUND_COLOR)
+    Display.window.fill(Constants.BACKGROUND_COLOR)
 
     state_manager.render(surface)
     root_object_manager.render(surface)

@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import pygame.draw
 from pygame.surface import Surface
 
+from root_object.RootObjectManager import RootObjectManager
 from src import Display
 from src.Font import Font
 from src.Positioning import center
@@ -15,13 +16,13 @@ from src.state.Alarm import Timer
 
 class Terminal(RootObject):
     def __init__(self, background_color, font: Font, keyboard_manager: KeyboardManager, state_manager: StateManager,
-                 shutdown, toggle_full_screen):
+                 root_object_manager: RootObjectManager, shutdown):
         self.background_color = background_color
         self.font: Font = font
         self.keyboard_manager: KeyboardManager = keyboard_manager
         self.state_manager: StateManager = state_manager
+        self.root_object_manager = root_object_manager
         self.shutdown = shutdown
-        self.toggle_full_screen = toggle_full_screen
 
         self.line = ''
         self.surface = Surface([0, 0])
@@ -120,7 +121,7 @@ class Terminal(RootObject):
             elif self.line[-2] == 'x':
                 self.shutdown()
             elif self.line[-2] == 'f':
-                self.toggle_full_screen()
+                Display.toggle_full_screen(self.root_object_manager, self.state_manager)
 
             self.line = ''
 
