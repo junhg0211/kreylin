@@ -3,15 +3,15 @@ from datetime import datetime, timedelta
 import pygame.draw
 from pygame.surface import Surface
 
-from root_object.RootObjectManager import RootObjectManager
 from src import Display
 from src.Font import Font
 from src.Positioning import center
 from src.manager.KeyboardManager import KeyboardManager
 from src.root_object.RootObject import RootObject
+from src.root_object.RootObjectManager import RootObjectManager
+from src.state.Alarm import Timer
 from src.state.Clock import Clock
 from src.state.StateManager import StateManager
-from src.state.Alarm import Timer
 
 
 class Terminal(RootObject):

@@ -1,9 +1,8 @@
 import pygame
-
 from pyautogui import size as screen_size
 
-from root_object.RootObjectManager import RootObjectManager
-from state.StateManager import StateManager
+from src.root_object.RootObjectManager import RootObjectManager
+from src.state.StateManager import StateManager
 
 size = (480, 720)
 fps = 60
@@ -27,7 +26,8 @@ def toggle_full_screen(root_object_manager: RootObjectManager, state_manager: St
 
     if full_screen:
         recorded_size = size
-        window = pygame.display.set_mode(screen_size(), pygame.FULLSCREEN)
+        size = screen_size()
+        window = pygame.display.set_mode(size, pygame.FULLSCREEN)
     else:
         window = pygame.display.set_mode(recorded_size, pygame.RESIZABLE)
 
