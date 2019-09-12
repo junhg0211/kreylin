@@ -5,8 +5,8 @@ from src.Font import Font
 from src.handler.HandlerManager import HandlerManager
 from src.handler.Quit import Quit
 from src.handler.RenderStop import RenderStop
-from src.manager.CursorManager import CursorManager
 from src.manager.KeyboardManager import KeyboardManager
+from src.root_object.HUD import HUD
 from src.root_object.RootObjectManager import RootObjectManager
 from src.root_object.Terminal import Terminal
 from src.state.Clock import Clock
@@ -15,8 +15,6 @@ from src.state.StateManager import StateManager
 running = True
 clock = pygame.time.Clock()
 
-# noinspection PyTypeChecker
-cursor_manager: CursorManager = None
 # noinspection PyTypeChecker
 keyboard_manager: KeyboardManager = None
 # noinspection PyTypeChecker
@@ -34,7 +32,7 @@ def shutdown():
 
 
 def init():
-    global cursor_manager, keyboard_manager, root_object_manager, state_manager, handler_manager
+    global keyboard_manager, root_object_manager, state_manager, handler_manager
 
     pygame.init()
 
@@ -43,7 +41,6 @@ def init():
     pygame.display.set_caption(Constants.PROJECT_NAME)
     pygame.display.set_icon(pygame.image.load(Constants.PROJECT_ICON))
 
-    cursor_manager = CursorManager()
     keyboard_manager = KeyboardManager()
     root_object_manager = RootObjectManager()
     state_manager = StateManager(Clock())
@@ -54,14 +51,13 @@ def init():
 
     root_object_manager.add(
         Terminal(Constants.TEXT_COLOR, Font(Constants.NANUMSQUARE_REGULAR_FONT, 32, Constants.BACKGROUND_COLOR),
-                 keyboard_manager, state_manager, root_object_manager, shutdown))
+                 keyboard_manager, state_manager, root_object_manager, handler_manager, shutdown))
 
 
 def handle():
     global running
 
     keyboard_manager.initialize()
-    cursor_manager.handle()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -81,8 +77,6 @@ def handle():
 
 def tick():
     handler_manager.tick()
-
-    cursor_manager.tick()
 
     state_manager.tick()
     root_object_manager.tick()

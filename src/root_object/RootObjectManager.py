@@ -2,16 +2,22 @@ from pygame.surface import Surface
 
 
 class RootObjectManager:
-    def __init__(self):
+    def __init__(self, hud=None):
+        self.hud = hud
+
         self.objects = []
 
     def tick(self):
         for _object_ in self.objects:
             _object_.tick()
+        if self.hud:
+            self.hud.tick()
 
     def render(self, surface: Surface):
         for _object_ in self.objects:
             _object_.render(surface)
+        if self.hud:
+            self.hud.render(surface)
 
     def add(self, _object_):
         self.objects.append(_object_)
