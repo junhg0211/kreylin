@@ -12,7 +12,7 @@ from src.root_object.RootObjectManager import RootObjectManager
 from src.state.Alarm import Timer
 from src.state.Clock import Clock
 from src.state.StateManager import StateManager
-from state.Stopwatch import Stopwatch
+from src.state.Stopwatch import Stopwatch
 
 
 class Terminal(RootObject):

@@ -13,6 +13,8 @@ window = None
 
 recorded_size = size
 
+render_enable = True
+
 
 def resize_objects(root_object_manager: RootObjectManager, state_manager: StateManager):
     root_object_manager.window_resize(*size)

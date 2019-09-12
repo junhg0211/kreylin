@@ -1,11 +1,8 @@
-from math import tau
 from pygame.surface import Surface
 
-from root_object.Circle import Circle
 from src import Constants
 from src.Font import Font
-from src.drawshapes import arc
-from src.root_object.RootObject import RootObject
+from src.root_object.Circle import Circle
 from src.root_object.Text import Text
 
 

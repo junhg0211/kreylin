@@ -4,6 +4,7 @@ from src import Constants, Display
 from src.Font import Font
 from src.handler.HandlerManager import HandlerManager
 from src.handler.Quit import Quit
+from src.handler.RenderStop import RenderStop
 from src.manager.CursorManager import CursorManager
 from src.manager.KeyboardManager import KeyboardManager
 from src.root_object.RootObjectManager import RootObjectManager
@@ -49,6 +50,7 @@ def init():
     handler_manager = HandlerManager()
 
     handler_manager.add(Quit(keyboard_manager, shutdown))
+    handler_manager.add(RenderStop(keyboard_manager))
 
     root_object_manager.add(
         Terminal(Constants.TEXT_COLOR, Font(Constants.NANUMSQUARE_REGULAR_FONT, 32, Constants.BACKGROUND_COLOR),
@@ -87,12 +89,13 @@ def tick():
 
 
 def render(surface):
-    Display.window.fill(Constants.BACKGROUND_COLOR)
+    if Display.render_enable:
+        Display.window.fill(Constants.BACKGROUND_COLOR)
 
-    state_manager.render(surface)
-    root_object_manager.render(surface)
+        state_manager.render(surface)
+        root_object_manager.render(surface)
 
-    pygame.display.flip()
+        pygame.display.flip()
 
 
 def main():
