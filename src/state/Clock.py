@@ -13,7 +13,7 @@ class Clock(State):
     def __init__(self):
         super().__init__()
 
-        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR, 0)
+        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR)
 
         self.time = Time(0)
 

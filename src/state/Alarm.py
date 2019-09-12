@@ -28,8 +28,6 @@ class Timer(State):
         self.target_time: Text = Text(0, 0, str(self.target).split('.')[0],
                                       Font(Constants.NANUMSQUARE_LIGHT_FONT, 32, Constants.TEXT_COLOR))
 
-        self.target_time.x = center(Display.size[0], self.target_time.surface.get_width())
-
         self.window_resize(*Display.size)
 
     def tick(self):

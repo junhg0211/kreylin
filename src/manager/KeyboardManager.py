@@ -19,7 +19,8 @@ class KeyboardManager:
         return tmp
 
     def pressed(self, unicode):
-        self.buffer += unicode
+        if unicode != '\\':
+            self.buffer += unicode
 
     def key_pressed(self, key_code):
         if key_code < self.key_count:
