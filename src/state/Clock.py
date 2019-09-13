@@ -13,7 +13,7 @@ class Clock(State):
     def __init__(self):
         super().__init__()
 
-        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR)
+        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR, Constants.progress)
 
         self.time = Time(0)
 
@@ -22,7 +22,7 @@ class Clock(State):
     def tick(self):
         now = datetime.now()
 
-        self.circle.progress = ((now.hour * 3600 + now.minute * 60 + now.second) + now.microsecond / 1000000) / 86400
+        Constants.progress = ((now.hour * 3600 + now.minute * 60 + now.second) + now.microsecond / 1000000) / 86400
 
         self.circle.tick()
 

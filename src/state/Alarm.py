@@ -22,7 +22,7 @@ class Timer(State):
 
         self.start_time = datetime.now()
 
-        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR)
+        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR, Constants.progress)
         self.last_time = Text(0, 0, '', Font(Constants.NANUMSQUARE_REGULAR_FONT, 16, Constants.TEXT_COLOR))
 
         self.time = Time(0)
@@ -34,7 +34,7 @@ class Timer(State):
     def tick(self):
         now = datetime.now()
 
-        self.circle.progress = (now - self.start_time) / (self.target - self.start_time)
+        Constants.progress = (now - self.start_time) / (self.target - self.start_time)
         self.circle.tick()
 
         self.last_time.set_text(str(self.target - now))

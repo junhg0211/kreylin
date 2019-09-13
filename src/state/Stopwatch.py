@@ -15,7 +15,7 @@ class Stopwatch(State):
     def __init__(self):
         super().__init__()
 
-        self.circle = Circle(0, 0, 190, 20, Constants.CIRCLE_COLOR)
+        self.circle = Circle(0, 0, 190, 20, Constants.CIRCLE_COLOR, Constants.progress)
         font = Font(Constants.NANUMSQUARE_REGULAR_FONT, 72, Constants.TEXT_COLOR)
         self.elapsed_time = Text(0, 0, '', font)
         font2 = Font(Constants.NANUMSQUARE_LIGHT_FONT, 32, Constants.TEXT_COLOR)
@@ -32,7 +32,7 @@ class Stopwatch(State):
     def tick(self):
         now = datetime.now()
         
-        self.circle.progress = (now.second + now.microsecond / 1000000) / 60
+        Constants.progress = (now.second + now.microsecond / 1000000) / 60
         self.circle.tick()
 
         delta = now - self.start_time
