@@ -23,6 +23,7 @@ class Timer(State):
         self.start_time = datetime.now()
 
         self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR)
+        self.last_time = Text(0, 0, '', Font(Constants.NANUMSQUARE_REGULAR_FONT, 16, Constants.TEXT_COLOR))
 
         self.time = Time(0)
         self.target_time: Text = Text(0, 0, str(self.target).split('.')[0],
@@ -36,6 +37,9 @@ class Timer(State):
         self.circle.progress = (now - self.start_time) / (self.target - self.start_time)
         self.circle.tick()
 
+        self.last_time.set_text(str(self.target - now))
+        self.last_time.x = center(Display.size[0], self.last_time.surface.get_width())
+
         self.time.tick()
 
         if self.circle.progress >= 1:
@@ -45,11 +49,13 @@ class Timer(State):
         super().render(surface)
 
         self.circle.render(surface)
+        self.last_time.render(surface)
         self.time.render(surface)
         self.target_time.render(surface)
 
     def window_resize(self, width: int, height: int):
         self.circle.window_resize(width, height)
+        self.last_time.y = self.circle.center_y + self.circle.circle_progress.font.size / 2
         self.time.window_resize(width, height)
         self.target_time.x = center(width, self.target_time.surface.get_width())
         self.target_time.y = self.time.y - self.target_time.font.size

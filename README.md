@@ -32,3 +32,7 @@
      * `YYYYMMDDHHmm` YYYY년 MM월 DD일 HH시 mm분
      * `YYYYMMDDHHmmSS` YYYY년 MM월 DD일 HH시 mm분 SS초
 1. 시간이 종료되면 시계 모드로 돌아갑니다.
+
+### 일시정지
+
+1. 백슬래쉬(<code>\\</code>)들 입렦하여 화면을 멈춥니다.

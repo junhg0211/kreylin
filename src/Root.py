@@ -6,7 +6,6 @@ from src.handler.HandlerManager import HandlerManager
 from src.handler.Quit import Quit
 from src.handler.RenderStop import RenderStop
 from src.manager.KeyboardManager import KeyboardManager
-from src.root_object.HUD import HUD
 from src.root_object.RootObjectManager import RootObjectManager
 from src.root_object.Terminal import Terminal
 from src.state.Clock import Clock

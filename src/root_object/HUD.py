@@ -2,11 +2,10 @@ from time import time
 
 from pygame.surface import Surface
 
-import Constants
 from src.handler.HandlerManager import HandlerManager
 from src.manager.KeyboardManager import KeyboardManager
 from src.root_object.RootObjectManager import RootObjectManager
-from src import Display
+from src import Display, Constants
 from src.Font import Font
 from src.root_object.RootObject import RootObject
 from src.state.StateManager import StateManager

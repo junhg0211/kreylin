@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1d49904-279d-4c4b-8273-24f7aa9f27ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/res/font/consola.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/root_object/HUD.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/CursorManager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/root_object/RootObjectManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root_object/RootObjectManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/root_object/HUD.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root_object/HUD.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/root_object/Terminal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/root_object/Terminal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/state/Alarm.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/state/Alarm.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Kreylin$MainWin.coverage" NAME="MainWin Coverage Results" MODIFIED="1568274154914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Kreylin$MainWin.coverage" NAME="MainWin Coverage Results" MODIFIED="1568339837013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Kreylin" />
@@ -26,13 +24,22 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Root.py">
+        <entry file="file://$PROJECT_DIR$/src/root_object/Terminal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
+            <state relative-caret-position="256">
+              <caret line="79" column="57" selection-start-line="79" selection-start-column="57" selection-end-line="79" selection-end-column="57" />
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#40#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -52,6 +59,7 @@
       <find>pygame.init</find>
       <find>handler</find>
       <find>handler_manag</find>
+      <find>def render</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -60,20 +68,20 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/state/Alarm.py" />
         <option value="$PROJECT_DIR$/src/root_object/Circle.py" />
         <option value="$PROJECT_DIR$/src/state/Clock.py" />
         <option value="$PROJECT_DIR$/src/manager/KeyboardManager.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Display.py" />
         <option value="$PROJECT_DIR$/src/handler/RenderStop.py" />
         <option value="$PROJECT_DIR$/src/root_object/ProgressCircle.py" />
         <option value="$PROJECT_DIR$/src/state/Stopwatch.py" />
-        <option value="$PROJECT_DIR$/src/Constants.py" />
         <option value="$PROJECT_DIR$/src/root_object/RootObjectManager.py" />
-        <option value="$PROJECT_DIR$/src/root_object/HUD.py" />
-        <option value="$PROJECT_DIR$/src/root_object/Terminal.py" />
         <option value="$PROJECT_DIR$/src/Root.py" />
+        <option value="$PROJECT_DIR$/src/root_object/HUD.py" />
+        <option value="$PROJECT_DIR$/src/state/Alarm.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/Constants.py" />
+        <option value="$PROJECT_DIR$/src/root_object/Terminal.py" />
       </list>
     </option>
   </component>
@@ -251,21 +259,21 @@
       <workItem from="1568208420045" duration="190000" />
       <workItem from="1568209001457" duration="684000" />
       <workItem from="1568210166069" duration="310000" />
-      <workItem from="1568250814593" duration="8187000" />
+      <workItem from="1568250814593" duration="13341000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8187000" />
+    <option name="totallyTimeSpent" value="13341000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.8318872" visible="true" weight="0.23827292" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.8318872" visible="true" weight="0.23827292" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info id="Run" order="3" sideWeight="0.1681128" side_tool="true" visible="true" weight="0.23827292" />
+      <window_info active="true" id="Run" order="3" sideWeight="0.1681128" side_tool="true" visible="true" weight="0.23827292" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" sideWeight="0.49946696" weight="0.329718" />
@@ -274,7 +282,7 @@
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50053304" side_tool="true" weight="0.329718" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -340,16 +348,6 @@
     <SUITE FILE_PATH="coverage/Kreylin$MainWin.coverage" NAME="MainWin Coverage Results" MODIFIED="1568209700963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="782">
-            <caret line="34" lean-forward="true" selection-end-line="34" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/handler/Handler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -405,9 +403,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/root_object/RootObject.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/root_object/Text.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -420,16 +415,6 @@
     <entry file="file://$PROJECT_DIR$/src/root_object/Time.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/state/Alarm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="53" column="8" selection-start-line="51" selection-end-line="55" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -506,13 +491,6 @@
     <entry file="file://$PROJECT_DIR$/__main__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/root_object/RootObjectManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -523,32 +501,62 @@
     <entry file="file://$PROJECT_DIR$/src/manager/CursorManager.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/root_object/Terminal.py">
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="32">
+            <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/state/Alarm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
+        <state relative-caret-position="456">
+          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/root_object/HUD.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="826">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="90">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root_object/RootObject.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Root.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="46" column="38" selection-start-line="46" selection-start-column="38" selection-end-line="46" selection-end-column="38" />
+        <state>
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/root_object/Terminal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="79" column="57" selection-start-line="79" selection-start-column="57" selection-end-line="79" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

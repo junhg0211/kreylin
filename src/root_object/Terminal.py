@@ -5,7 +5,7 @@ from pygame.surface import Surface
 
 from src.handler.HandlerManager import HandlerManager
 from src.root_object.HUD import HUD
-from src import Display
+from src import Display, Constants
 from src.Font import Font
 from src.Positioning import center
 from src.manager.KeyboardManager import KeyboardManager
@@ -31,6 +31,8 @@ class Terminal(RootObject):
         self.line = ''
         self.surface = Surface([0, 0])
 
+        self.surface_background_width = 0
+
         self.x = 0
         self.y = 100
 
@@ -44,8 +46,11 @@ class Terminal(RootObject):
             self.line = self.line[:i-1] + self.line[i+1:]
 
         self.surface = self.font.render(self.line)
+        self.surface_background_width += \
+            (self.surface.get_width() - self.surface_background_width) / Constants.FRICTION
 
-        self.x = center(Display.size[0], self.surface.get_width())
+        target = center(Display.size[0], self.surface.get_width())
+        self.x += (target - self.x) / (Constants.FRICTION / 3)
 
         if self.keyboard_manager.start_keys[pygame.K_ESCAPE]:
             self.line = ''
@@ -72,9 +77,12 @@ class Terminal(RootObject):
             self.line = ''
 
     def render(self, surface: Surface):
-        if self.line:
-            pygame.draw.rect(surface, self.background_color, ((self.x, self.y),
-                                                              (self.surface.get_width(), self.surface.get_height())))
+        if self.line or self.surface_background_width > 3:
+            margin = 5
+
+            pygame.draw.rect(surface, self.background_color,
+                             ((center(surface.get_width(), self.surface_background_width + margin*4), self.y - margin),
+                              (self.surface_background_width + margin*4, self.surface.get_height() + margin * 2)))
             surface.blit(self.surface, (self.x, self.y))
 
     def alarm(self, line):
@@ -147,6 +155,8 @@ class Terminal(RootObject):
             try:
                 target = now + timedelta(days=(year * 365 + day), hours=hour, minutes=minute, seconds=second)
             except ValueError:
+                pass
+            except OverflowError:
                 pass
             else:
                 if now < target:
