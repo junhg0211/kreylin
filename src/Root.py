@@ -1,6 +1,7 @@
 import pygame
 
-import Constants, Display
+import Constants
+import Display
 from Font import Font
 from handler.HandlerManager import HandlerManager
 from handler.Quit import Quit

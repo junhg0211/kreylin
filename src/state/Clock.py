@@ -2,7 +2,8 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-import Constants, Display
+import Constants
+import Display
 from root_object.ProgressCircle import ProgressCircle
 from root_object.Time import Time
 from state.State import State

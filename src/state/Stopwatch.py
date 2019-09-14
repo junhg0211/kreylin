@@ -2,7 +2,8 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-import Constants, Display
+import Constants
+import Display
 from Font import Font
 from Positioning import center
 from root_object.Circle import Circle
@@ -29,6 +30,7 @@ class Stopwatch(State):
 
         self.window_resize(*Display.size)
 
+    # noinspection DuplicatedCode
     def tick(self):
         now = datetime.now()
         
