@@ -26,6 +26,11 @@ class RootObjectManager:
         if _object_ in self.objects:
             self.objects.remove(_object_)
 
+    def remove_by_class(self, _class_):
+        for _object_ in self.objects:
+            if isinstance(_object_, _class_):
+                self.objects.remove(_object_)
+
     def window_resize(self, width, height):
         for _object_ in self.objects:
             _object_.window_resize(width, height)

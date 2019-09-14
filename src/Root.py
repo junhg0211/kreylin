@@ -7,6 +7,7 @@ from handler.HandlerManager import HandlerManager
 from handler.Quit import Quit
 from handler.RenderStop import RenderStop
 from manager.KeyboardManager import KeyboardManager
+from root_object.ResizaAlert import ResizeAlert
 from root_object.RootObjectManager import RootObjectManager
 from root_object.Terminal import Terminal
 from state.Clock import Clock
@@ -68,6 +69,7 @@ def handle():
             else:
                 Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
             Display.resize_objects(root_object_manager, state_manager)
+            root_object_manager.add(ResizeAlert(*Display.size, root_object_manager))
         elif event.type == pygame.KEYDOWN:
             keyboard_manager.key_pressed(event.key)
             keyboard_manager.pressed(event.unicode)
