@@ -42,7 +42,7 @@ class Timer(State):
 
         self.time.tick()
 
-        if self.circle.progress >= 1:
+        if Constants.progress >= 1:
             self.state_manager.state = Clock()
 
     def render(self, surface: Surface):
