@@ -1,15 +1,15 @@
 import pygame
 
-from src import Constants, Display
-from src.Font import Font
-from src.handler.HandlerManager import HandlerManager
-from src.handler.Quit import Quit
-from src.handler.RenderStop import RenderStop
-from src.manager.KeyboardManager import KeyboardManager
-from src.root_object.RootObjectManager import RootObjectManager
-from src.root_object.Terminal import Terminal
-from src.state.Clock import Clock
-from src.state.StateManager import StateManager
+import Constants, Display
+from Font import Font
+from handler.HandlerManager import HandlerManager
+from handler.Quit import Quit
+from handler.RenderStop import RenderStop
+from manager.KeyboardManager import KeyboardManager
+from root_object.RootObjectManager import RootObjectManager
+from root_object.Terminal import Terminal
+from state.Clock import Clock
+from state.StateManager import StateManager
 
 running = True
 clock = pygame.time.Clock()

@@ -2,13 +2,13 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-from src import Constants, Display
-from src.Font import Font
-from src.Positioning import center
-from src.root_object.Circle import Circle
-from src.root_object.Text import Text
-from src.root_object.Time import Time
-from src.state.State import State
+import Constants, Display
+from Font import Font
+from Positioning import center
+from root_object.Circle import Circle
+from root_object.Text import Text
+from root_object.Time import Time
+from state.State import State
 
 
 class Stopwatch(State):

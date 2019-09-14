@@ -1,8 +1,8 @@
 import pygame
 from pyautogui import size as screen_size
 
-from src.root_object.RootObjectManager import RootObjectManager
-from src.state.StateManager import StateManager
+from root_object.RootObjectManager import RootObjectManager
+from state.StateManager import StateManager
 
 size = (480, 720)
 fps = 60

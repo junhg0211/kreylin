@@ -2,10 +2,10 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-from src import Constants, Display
-from src.root_object.ProgressCircle import ProgressCircle
-from src.root_object.Time import Time
-from src.state.State import State
+import Constants, Display
+from root_object.ProgressCircle import ProgressCircle
+from root_object.Time import Time
+from state.State import State
 
 
 class Clock(State):

@@ -1,9 +1,9 @@
 from pygame.surface import Surface
 
-from src import Display
-from src.Font import Font
-from src.Positioning import center
-from src.root_object.RootObject import RootObject
+import Display
+from Font import Font
+from Positioning import center
+from root_object.RootObject import RootObject
 
 
 class Text(RootObject):

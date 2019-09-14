@@ -1,8 +1,8 @@
 import pygame
 
-import src.Display
-from src.handler.Handler import Handler
-from src.manager.KeyboardManager import KeyboardManager
+import Display
+from handler.Handler import Handler
+from manager.KeyboardManager import KeyboardManager
 
 
 class RenderStop(Handler):
@@ -10,4 +10,4 @@ class RenderStop(Handler):
         self.keyboard_manager = keyboard_manager
 
     def tick(self):
-        src.Display.render_enable = not self.keyboard_manager.keys[pygame.K_BACKSLASH]
+        Display.render_enable = not self.keyboard_manager.keys[pygame.K_BACKSLASH]

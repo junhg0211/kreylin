@@ -2,10 +2,10 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-from src import Constants
-from src.Font import Font
-from src.root_object.RootObject import RootObject
-from src.root_object.Text import Text
+import Constants
+from Font import Font
+from root_object.RootObject import RootObject
+from root_object.Text import Text
 
 
 class Time(RootObject):

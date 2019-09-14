@@ -2,9 +2,9 @@ from math import tau
 
 from pygame.surface import Surface
 
-from src import Constants
-from src.drawshapes import arc
-from src.root_object.RootObject import RootObject
+import Constants
+from drawshapes import arc
+from root_object.RootObject import RootObject
 
 
 class Circle(RootObject):

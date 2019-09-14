@@ -1,9 +1,9 @@
 from pygame.surface import Surface
 
-from src import Constants
-from src.Font import Font
-from src.root_object.Circle import Circle
-from src.root_object.Text import Text
+import Constants
+from Font import Font
+from root_object.Circle import Circle
+from root_object.Text import Text
 
 
 class ProgressCircle(Circle):

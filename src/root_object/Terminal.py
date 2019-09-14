@@ -3,18 +3,19 @@ from datetime import datetime, timedelta
 import pygame.draw
 from pygame.surface import Surface
 
-from src.handler.HandlerManager import HandlerManager
-from src.root_object.HUD import HUD
-from src import Display, Constants
-from src.Font import Font
-from src.Positioning import center
-from src.manager.KeyboardManager import KeyboardManager
-from src.root_object.RootObject import RootObject
-from src.root_object.RootObjectManager import RootObjectManager
-from src.state.Alarm import Timer
-from src.state.Clock import Clock
-from src.state.StateManager import StateManager
-from src.state.Stopwatch import Stopwatch
+import Constants
+import Display
+from Font import Font
+from Positioning import center
+from handler.HandlerManager import HandlerManager
+from manager.KeyboardManager import KeyboardManager
+from root_object.HUD import HUD
+from root_object.RootObject import RootObject
+from root_object.RootObjectManager import RootObjectManager
+from state.Alarm import Timer
+from state.Clock import Clock
+from state.StateManager import StateManager
+from state.Stopwatch import Stopwatch
 
 
 class Terminal(RootObject):

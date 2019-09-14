@@ -1,4 +1,4 @@
-from src.handler.Handler import Handler
+from handler.Handler import Handler
 
 
 class HandlerManager:

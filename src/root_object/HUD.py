@@ -2,13 +2,14 @@ from time import time
 
 from pygame.surface import Surface
 
-from src.handler.HandlerManager import HandlerManager
-from src.manager.KeyboardManager import KeyboardManager
-from src.root_object.RootObjectManager import RootObjectManager
-from src import Display, Constants
-from src.Font import Font
-from src.root_object.RootObject import RootObject
-from src.state.StateManager import StateManager
+import Constants
+import Display
+from Font import Font
+from handler.HandlerManager import HandlerManager
+from manager.KeyboardManager import KeyboardManager
+from root_object.RootObject import RootObject
+from root_object.RootObjectManager import RootObjectManager
+from state.StateManager import StateManager
 
 
 class HUD(RootObject):

@@ -2,15 +2,15 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-from src import Display, Constants
-from src.Font import Font
-from src.Positioning import center
-from src.root_object.ProgressCircle import ProgressCircle
-from src.root_object.Text import Text
-from src.root_object.Time import Time
-from src.state.Clock import Clock
-from src.state.State import State
-from src.state.StateManager import StateManager
+import Display, Constants
+from Font import Font
+from Positioning import center
+from root_object.ProgressCircle import ProgressCircle
+from root_object.Text import Text
+from root_object.Time import Time
+from state.Clock import Clock
+from state.State import State
+from state.StateManager import StateManager
 
 
 class Timer(State):
