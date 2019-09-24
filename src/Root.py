@@ -37,10 +37,10 @@ def init():
 
     pygame.init()
 
-    Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
-
     pygame.display.set_caption(Constants.PROJECT_NAME)
     pygame.display.set_icon(pygame.image.load(Constants.PROJECT_ICON))
+
+    Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
 
     keyboard_manager = KeyboardManager()
     root_object_manager = RootObjectManager()
