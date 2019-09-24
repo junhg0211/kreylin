@@ -29,10 +29,10 @@
    * 시간 포맷은 다음과 같습니다.
      * `HHMM` HH시 MM분
      * `HHMMSS` HH시 MM분 SS초
-     * `YYYYMMDDHHmm` YYYY년 MM월 DD일 HH시 mm분
-     * `YYYYMMDDHHmmSS` YYYY년 MM월 DD일 HH시 mm분 SS초
+     * `YYYYOODDHHMM` YYYY년 OO월 DD일 HH시 MM분
+     * `YYYYOODDHHMMSS` YYYY년 OO월 DD일 HH시 MM분 SS초
 1. 시간이 종료되면 시계 모드로 돌아갑니다.
 
 ### 일시정지
 
-1. 백슬래쉬(<code>\\</code>)들 입력하여 화면을 멈춥니다.
+1. 백슬래쉬(<code>\\</code>)를 입력하여 화면을 멈춥니다.
