@@ -78,7 +78,18 @@ class Terminal(RootObject):
                 self.root_object_manager.hud = None if self.root_object_manager.hud else \
                     HUD(self.state_manager, self.root_object_manager, self.keyboard_manager, self.handler_manager)
             elif self.line[-2] == 'c':
-                self.state_manager.state = Color()
+                if len(self.line) >= 19:
+                    Constants.change_color(
+                        (int(self.line[:2], 16), int(self.line[2:4], 16), int(self.line[4:6], 16)),
+                        (int(self.line[6:8], 16), int(self.line[8:10], 16), int(self.line[10:12], 16)),
+                        (int(self.line[12:14], 16), int(self.line[14:16], 16), int(self.line[16:18], 16)))
+                    self.state_manager.state = Clock()
+                elif len(self.line) >= 3:
+                    if ord(self.line[-3].upper()) - ord('G') < len(Color.SAMPLE_PALETTES):
+                        Constants.change_color(*Color.SAMPLE_PALETTES[ord(self.line[-3].upper()) - ord('G')])
+                    self.state_manager.state = Clock()
+                else:
+                    self.state_manager.state = Color()
             elif self.line.lower().startswith('uuddlrlrab'):
                 self.state_manager.state = EasterEgg()
 

@@ -15,7 +15,10 @@ from state.StateManager import StateManager
 class HUD(RootObject):
     def __init__(self, state_manager: StateManager, root_object_manager: RootObjectManager,
                  keyboard_manager: KeyboardManager, handler_manager: HandlerManager,
-                 font_path: str = Constants.CONSOLAS_FONT, size: int = 15, color: tuple = (255, 255, 255)):
+                 font_path: str = Constants.CONSOLAS_FONT, size: int = 15, color=None):
+        if color is None:
+            color = (255, 255, 255) if sum(Constants.BACKGROUND_COLOR) < 150 else (0, 0, 0)
+
         self.state_manager = state_manager
         self.root_object_manager = root_object_manager
         self.keyboard_manager = keyboard_manager
