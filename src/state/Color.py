@@ -17,13 +17,23 @@ class Color(State):
     def __init__(self):
         super().__init__()
 
-        radius = 50
-        center_x = center(Display.size[0], ColorSample.get_width_by_radius(radius))
-        y_offset = 120
+        self.radius = 50
+        center_x = center(Display.size[0], ColorSample.get_width_by_radius(self.radius))
+        y_offset = center(Display.size[1], self.radius * 9.6)
 
-        font = Font(Constants.NANUMSQUARE_BOLD_FONT, radius // 3 * 2, Constants.TEXT_COLOR)
+        self.font = Font(Constants.NANUMSQUARE_BOLD_FONT, self.radius // 3 * 2, Constants.TEXT_COLOR)
 
         for i in range(len(Color.SAMPLE_PALETTES)):
-            x, y = center_x, i * radius * 4 + y_offset
-            self.objects.append(ColorSample(x, y, radius, *Color.SAMPLE_PALETTES[i]))
-            self.objects.append(Text(x + font.size // 3, y - font.size * 1.5, chr(i + ord('G')), font))
+            x, y = center_x, i * self.radius * 4 + y_offset
+            self.objects.append(ColorSample(x, y, self.radius, *Color.SAMPLE_PALETTES[i]))
+            self.objects.append(Text(x + self.font.size // 3, y - self.font.size * 1.5, chr(i + ord('G')), self.font))
+
+    def window_resize(self, width: int, height: int):
+        center_x = center(Display.size[0], ColorSample.get_width_by_radius(self.radius))
+        y_offset = center(Display.size[1], self.radius * 9.6)
+
+        self.objects = []
+        for i in range(len(Color.SAMPLE_PALETTES)):
+            x, y = center_x, i * self.radius * 4 + y_offset
+            self.objects.append(ColorSample(x, y, self.radius, *Color.SAMPLE_PALETTES[i]))
+            self.objects.append(Text(x + self.font.size // 3, y - self.font.size * 1.5, chr(i + ord('G')), self.font))
