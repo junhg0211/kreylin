@@ -5,6 +5,15 @@ BACKGROUND_COLOR = (31, 33, 37)
 CIRCLE_COLOR = (253, 222, 89)
 TEXT_COLOR = (222, 222, 222)
 
+
+def change_color(background_color: tuple, circle_color: tuple, text_color: tuple):
+    global BACKGROUND_COLOR, CIRCLE_COLOR, TEXT_COLOR
+
+    BACKGROUND_COLOR = background_color
+    CIRCLE_COLOR = circle_color
+    TEXT_COLOR = text_color
+
+
 # noinspection SpellCheckingInspection
 CONSOLAS_FONT = './res/font/consola.ttf'
 # noinspection SpellCheckingInspection

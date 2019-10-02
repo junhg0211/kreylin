@@ -14,6 +14,7 @@ from root_object.RootObject import RootObject
 from root_object.RootObjectManager import RootObjectManager
 from state.Alarm import Timer
 from state.Clock import Clock
+from state.Color import Color
 from state.EasterEgg import EasterEgg
 from state.StateManager import StateManager
 from state.Stopwatch import Stopwatch
@@ -76,6 +77,19 @@ class Terminal(RootObject):
             elif self.line[-2] == 'h':
                 self.root_object_manager.hud = None if self.root_object_manager.hud else \
                     HUD(self.state_manager, self.root_object_manager, self.keyboard_manager, self.handler_manager)
+            elif self.line[-2] == 'c':
+                if len(self.line) >= 19:
+                    Constants.change_color(
+                        (int(self.line[:2], 16), int(self.line[2:4], 16), int(self.line[4:6], 16)),
+                        (int(self.line[6:8], 16), int(self.line[8:10], 16), int(self.line[10:12], 16)),
+                        (int(self.line[12:14], 16), int(self.line[14:16], 16), int(self.line[16:18], 16)))
+                    self.state_manager.state = Clock()
+                elif len(self.line) >= 3:
+                    if ord(self.line[-3].upper()) - ord('G') < len(Color.SAMPLE_PALETTES):
+                        Constants.change_color(*Color.SAMPLE_PALETTES[ord(self.line[-3].upper()) - ord('G')])
+                    self.state_manager.state = Clock()
+                else:
+                    self.state_manager.state = Color()
             elif self.line.lower().startswith('uuddlrlrab'):
                 self.state_manager.state = EasterEgg()
 
