@@ -37,7 +37,7 @@ def init():
 
     pygame.init()
 
-    pygame.display.set_caption(Constants.PROJECT_NAME)
+    pygame.display.set_caption(f'{Constants.PROJECT_NAME} {Constants.PROJECT_VERSION}')
     pygame.display.set_icon(pygame.image.load(Constants.PROJECT_ICON))
 
     Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
