@@ -24,5 +24,6 @@ setup(
     description='Good Timer™',
     author='NOA "Sch" M. Canepina I',
     options={'build_exe': build_options},
-    executables=executable
+    executables=executable,
+    requires=['pygame', 'pyautogui']
 )

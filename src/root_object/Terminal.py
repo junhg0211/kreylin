@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from time import time
 
 import pygame.draw
 from pygame.surface import Surface
@@ -39,7 +40,24 @@ class Terminal(RootObject):
         self.x = 0
         self.y = 100
 
+        self.backspace_pressed_time = 0
+        self.backspace_sleep_duration = 0.5
+        self.backspace_repress_cycle = 0.05
+        self.backspace_cycle_elapsed = 0
+
+        self.last_loop_time = 0
+
     def tick(self):
+        loop_time = time()
+        if self.keyboard_manager.start_keys[pygame.K_BACKSPACE]:
+            self.backspace_pressed_time = time()
+        if self.keyboard_manager.keys[pygame.K_BACKSPACE] and \
+                self.backspace_sleep_duration + self.backspace_pressed_time <= time():
+            self.backspace_cycle_elapsed += loop_time - self.last_loop_time
+            if self.backspace_cycle_elapsed >= self.backspace_repress_cycle:
+                self.line += '\b'
+                self.backspace_cycle_elapsed -= self.backspace_repress_cycle
+
         self.line += self.keyboard_manager.pop_buffer()
         while '\x7f' in self.line:
             i = self.line.index('\x7f')
@@ -94,6 +112,8 @@ class Terminal(RootObject):
                 self.state_manager.state = EasterEgg()
 
             self.line = ''
+
+        self.last_loop_time = loop_time
 
     def render(self, surface: Surface):
         if self.line or self.surface_background_width > 3:
