@@ -14,6 +14,7 @@ from root_object.RootObject import RootObject
 from root_object.RootObjectManager import RootObjectManager
 from state.Alarm import Timer
 from state.Clock import Clock
+from state.EasterEgg import EasterEgg
 from state.StateManager import StateManager
 from state.Stopwatch import Stopwatch
 
@@ -59,6 +60,7 @@ class Terminal(RootObject):
             self.state_manager.state = Clock()
         elif len(self.line) > 1 and (self.keyboard_manager.start_keys[pygame.K_RETURN] or
                                      self.keyboard_manager.start_keys[pygame.K_KP_ENTER]):
+            # noinspection SpellCheckingInspection
             if self.line[-2] == '.':
                 self.alarm(self.line)
             elif self.line[-2] == '`':
@@ -74,6 +76,8 @@ class Terminal(RootObject):
             elif self.line[-2] == 'h':
                 self.root_object_manager.hud = None if self.root_object_manager.hud else \
                     HUD(self.state_manager, self.root_object_manager, self.keyboard_manager, self.handler_manager)
+            elif self.line.lower().startswith('uuddlrlrab'):
+                self.state_manager.state = EasterEgg()
 
             self.line = ''
 

@@ -46,7 +46,7 @@ class HUD(RootObject):
                 f'State_ {self.state_manager.state.__class__.__name__} ({self.state_manager.state})\n' \
                 f'Object_ {len(self.root_object_manager.objects)}  Handler_ {len(self.handler_manager.handlers)}\n\n' \
                 f'Keyboard_ {self.keyboard_manager.keys.count(True)}\n\n' \
-                f'Global-Progress_ {Constants.progress:.08f}'
+                f'Global-Progress_ {Constants.progress:.030f}'
         except TypeError:
             pass
         else:
