@@ -1,5 +1,5 @@
 PROJECT_NAME = 'Kreylin'
-PROJECT_VERSION = 'alpha_1.2'
+PROJECT_VERSION = 'alpha_1.3'
 PROJECT_ICON = './res/icon.png'
 
 BACKGROUND_COLOR = (31, 33, 37)
