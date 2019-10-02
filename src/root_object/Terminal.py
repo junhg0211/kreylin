@@ -70,8 +70,8 @@ class Terminal(RootObject):
         self.surface_background_width += \
             (self.surface.get_width() - self.surface_background_width) / Constants.FRICTION
 
-        target = center(Display.size[0], self.surface.get_width())
-        self.x += (target - self.x) / (Constants.FRICTION / 3)
+        start_time = center(Display.size[0], self.surface.get_width())
+        self.x += (start_time - self.x) / (Constants.FRICTION / 3)
 
         if self.keyboard_manager.start_keys[pygame.K_ESCAPE]:
             self.line = ''
@@ -85,7 +85,46 @@ class Terminal(RootObject):
             elif self.line[-2] == '`':
                 self.timer(self.line)
             elif self.line[-2] == '/':
-                self.state_manager.state = Stopwatch()
+                now = datetime.now()
+                year, day = 0, 0
+                hour, minute, second = 0, 0, 0
+                change = True
+                try:
+                    minute += float(self.line[:-2])
+                except ValueError:
+                    try:
+                        tmp = float(self.line[:-3])
+                    except ValueError:
+                        change = False
+                    else:
+                        if self.line[-3].lower() == 's':
+                            second += tmp
+                        elif self.line[-3].lower() == 'h':
+                            hour += tmp
+                        elif self.line[-3].lower() == 'd':
+                            day += tmp
+                        elif self.line[-3].lower() == 'y':
+                            year += tmp
+                    while second > 60:
+                        second -= 60
+                        minute += 1
+                    while minute > 60:
+                        minute -= 60
+                        hour += 1
+                    while hour > 24:
+                        hour -= 24
+                        day += 1
+                if change:
+                    try:
+                        start_time = now - timedelta(days=(year * 365 + day), hours=hour, minutes=minute, seconds=second)
+                    except ValueError:
+                        pass
+                    except OverflowError:
+                        pass
+                    else:
+                        self.state_manager.state = Stopwatch(start_time)
+                else:
+                    self.state_manager.state = Stopwatch()
             elif self.line[-2] == '-':
                 self.state_manager.state = Clock()
             elif self.line[-2] == 'x':
