@@ -108,6 +108,8 @@ class Terminal(RootObject):
                     self.state_manager.state = Clock()
                 else:
                     self.state_manager.state = Color()
+                if self.root_object_manager.hud is not None:
+                    self.root_object_manager.hud.recolor_background()
             elif self.line.lower().startswith('uuddlrlrab'):
                 self.state_manager.state = EasterEgg()
 

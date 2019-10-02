@@ -15,21 +15,21 @@ from state.StateManager import StateManager
 class HUD(RootObject):
     def __init__(self, state_manager: StateManager, root_object_manager: RootObjectManager,
                  keyboard_manager: KeyboardManager, handler_manager: HandlerManager,
-                 font_path: str = Constants.CONSOLAS_FONT, size: int = 15, color=None):
-        if color is None:
-            color = (255, 255, 255) if sum(Constants.BACKGROUND_COLOR) < 150 else (0, 0, 0)
-
+                 font_path: str = Constants.CONSOLAS_FONT, size: int = 15):
         self.state_manager = state_manager
         self.root_object_manager = root_object_manager
         self.keyboard_manager = keyboard_manager
         self.handler_manager = handler_manager
-        self.font = Font(font_path, size, color)
+        self.font = Font(font_path, size, Constants.TEXT_COLOR)
 
         self.surfaces = []
 
         self.last_call = time()
         self.fps_time = 0
         self.real_fps = 0
+
+    def recolor_background(self):
+        self.font = Font(self.font.font_path, self.font.size, Constants.TEXT_COLOR)
 
     def tick(self):
         call = time()
@@ -44,7 +44,8 @@ class HUD(RootObject):
             fps = None
 
         try:
-            string = f'Display_ {Display.size[0]}x{Display.size[1]}@{fps:f}\nReal-Fps {self.real_fps} fps\n' \
+            string = f'{Constants.PROJECT_NAME} {Constants.PROJECT_VERSION}\n\n' \
+                f'Display_ {Display.size[0]}x{Display.size[1]}@{fps:f}\nReal-Fps {self.real_fps} fps\n' \
                 f'Full-Screen_ {Display.full_screen}\n\n' \
                 f'State_ {self.state_manager.state.__class__.__name__} ({self.state_manager.state})\n' \
                 f'Object_ {len(self.root_object_manager.objects)}  Handler_ {len(self.handler_manager.handlers)}\n\n' \
