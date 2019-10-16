@@ -28,3 +28,5 @@ NANUMSQUARE_REGULAR_FONT = './res/font/NANUMSQUARER.TTF'
 FRICTION = 12
 
 progress = 0.0
+
+responsible_color = True
