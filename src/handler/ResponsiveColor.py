@@ -25,7 +25,7 @@ class ResponsiveColor(Handler):
         if Constants.responsible_color:
             now = datetime.now()
 
-            time = now.hour + now.minute / 60 + (now.second + now.microsecond / 1000000) / 1 # 3600
+            time = now.hour + now.minute / 60 + (now.second + now.microsecond / 1000000) / 13600
 
             if 0 <= time < 5:
                 Constants.change_color(
