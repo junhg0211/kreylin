@@ -13,7 +13,7 @@ if platform == 'win32':
     base = 'Win32GUI'
 
 build_options = {
-    'packages': ('pygame', 'pyautogui')
+    'packages': ('pygame', 'pyautogui', 'pyaudio', 'wave')
 }
 
 executable = [Executable('./__main__.py', base=base, icon='./res/icon.ico', targetName='Kreylin.exe')]
