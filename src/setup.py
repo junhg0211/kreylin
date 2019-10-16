@@ -25,5 +25,5 @@ setup(
     author='NOA "Sch" M. Canepina I',
     options={'build_exe': build_options},
     executables=executable,
-    requires=['pygame', 'pyautogui', 'pyaudio']
+    requires=['pygame', 'pyautogui', 'pyaudio', 'wave']
 )
