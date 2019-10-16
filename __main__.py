@@ -1,9 +1,12 @@
-import os
+from os import chdir
+from os.path import dirname, abspath
 from sys import path
+
 path.append('./src')
 
 if __name__ == '__main__':
-    os.chdir(os.path.split(__file__)[0])
+    chdir(dirname(abspath("__ file__")))
 
     from Root import main
+
     main()
