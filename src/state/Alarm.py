@@ -8,12 +8,15 @@ from Positioning import center
 from root_object.ProgressCircle import ProgressCircle
 from root_object.Text import Text
 from root_object.Time import Time
+from sound.Sound import play_wav
 from state.Clock import Clock
 from state.State import State
 from state.StateManager import StateManager
 
 
 class Timer(State):
+    END_SOUND = './res/sound/ding.wav'
+
     def __init__(self, target: datetime, state_manager: StateManager):
         super().__init__()
 
@@ -50,6 +53,7 @@ class Timer(State):
 
         if Constants.progress >= 1:
             self.state_manager.state = Clock()
+            play_wav(Timer.END_SOUND)
 
     def render(self, surface: Surface):
         super().render(surface)
