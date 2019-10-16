@@ -38,4 +38,4 @@ FRICTION = 12
 
 progress = 0.0
 
-responsible_color = False
+responsible_color = True
