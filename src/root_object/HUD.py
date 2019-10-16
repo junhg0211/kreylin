@@ -57,6 +57,7 @@ class HUD(RootObject):
         except TypeError:
             pass
         else:
+            self.font.set_color(Constants.TEXT_COLOR)
             self.surfaces = [self.font.render(line) if line else None for line in string.split('\n')]
 
         self.last_call = call
