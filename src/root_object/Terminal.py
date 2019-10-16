@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from time import time
 
 import pygame.draw
 from pygame.surface import Surface
@@ -39,7 +40,24 @@ class Terminal(RootObject):
         self.x = 0
         self.y = 100
 
+        self.backspace_pressed_time = 0
+        self.backspace_sleep_duration = 0.5
+        self.backspace_repress_cycle = 0.05
+        self.backspace_cycle_elapsed = 0
+
+        self.last_loop_time = 0
+
     def tick(self):
+        loop_time = time()
+        if self.keyboard_manager.start_keys[pygame.K_BACKSPACE]:
+            self.backspace_pressed_time = time()
+        if self.keyboard_manager.keys[pygame.K_BACKSPACE] and \
+                self.backspace_sleep_duration + self.backspace_pressed_time <= time():
+            self.backspace_cycle_elapsed += loop_time - self.last_loop_time
+            if self.backspace_cycle_elapsed >= self.backspace_repress_cycle:
+                self.line += '\b'
+                self.backspace_cycle_elapsed -= self.backspace_repress_cycle
+
         self.line += self.keyboard_manager.pop_buffer()
         while '\x7f' in self.line:
             i = self.line.index('\x7f')
@@ -52,8 +70,8 @@ class Terminal(RootObject):
         self.surface_background_width += \
             (self.surface.get_width() - self.surface_background_width) / Constants.FRICTION
 
-        target = center(Display.size[0], self.surface.get_width())
-        self.x += (target - self.x) / (Constants.FRICTION / 3)
+        start_time = center(Display.size[0], self.surface.get_width())
+        self.x += (start_time - self.x) / (Constants.FRICTION / 3)
 
         if self.keyboard_manager.start_keys[pygame.K_ESCAPE]:
             self.line = ''
@@ -61,13 +79,54 @@ class Terminal(RootObject):
             self.state_manager.state = Clock()
         elif len(self.line) > 1 and (self.keyboard_manager.start_keys[pygame.K_RETURN] or
                                      self.keyboard_manager.start_keys[pygame.K_KP_ENTER]):
+            self.line = self.line.lower()
+
             # noinspection SpellCheckingInspection
             if self.line[-2] == '.':
                 self.alarm(self.line)
             elif self.line[-2] == '`':
                 self.timer(self.line)
             elif self.line[-2] == '/':
-                self.state_manager.state = Stopwatch()
+                now = datetime.now()
+                year, day = 0, 0
+                hour, minute, second = 0, 0, 0
+                change = True
+                try:
+                    minute += float(self.line[:-2])
+                except ValueError:
+                    try:
+                        tmp = float(self.line[:-3])
+                    except ValueError:
+                        change = False
+                    else:
+                        if self.line[-3].lower() == 's':
+                            second += tmp
+                        elif self.line[-3].lower() == 'h':
+                            hour += tmp
+                        elif self.line[-3].lower() == 'd':
+                            day += tmp
+                        elif self.line[-3].lower() == 'y':
+                            year += tmp
+                    while second > 60:
+                        second -= 60
+                        minute += 1
+                    while minute > 60:
+                        minute -= 60
+                        hour += 1
+                    while hour > 24:
+                        hour -= 24
+                        day += 1
+                if change:
+                    try:
+                        start_time = now - timedelta(days=(year * 365 + day), hours=hour, minutes=minute, seconds=second)
+                    except ValueError:
+                        pass
+                    except OverflowError:
+                        pass
+                    else:
+                        self.state_manager.state = Stopwatch(start_time)
+                else:
+                    self.state_manager.state = Stopwatch()
             elif self.line[-2] == '-':
                 self.state_manager.state = Clock()
             elif self.line[-2] == 'x':
@@ -78,6 +137,7 @@ class Terminal(RootObject):
                 self.root_object_manager.hud = None if self.root_object_manager.hud else \
                     HUD(self.state_manager, self.root_object_manager, self.keyboard_manager, self.handler_manager)
             elif self.line[-2] == 'c':
+                Constants.responsible_color = False
                 if len(self.line) >= 19:
                     Constants.change_color(
                         (int(self.line[:2], 16), int(self.line[2:4], 16), int(self.line[4:6], 16)),
@@ -89,11 +149,19 @@ class Terminal(RootObject):
                         Constants.change_color(*Color.SAMPLE_PALETTES[ord(self.line[-3].upper()) - ord('G')])
                     self.state_manager.state = Clock()
                 else:
-                    self.state_manager.state = Color()
+                    if isinstance(self.state_manager.state, Color):
+                        Constants.responsible_color = True
+                        self.state_manager.state = Clock()
+                    else:
+                        self.state_manager.state = Color()
+                if self.root_object_manager.hud is not None:
+                    self.root_object_manager.hud.recolor_background()
             elif self.line.lower().startswith('uuddlrlrab'):
                 self.state_manager.state = EasterEgg()
 
             self.line = ''
+
+        self.last_loop_time = loop_time
 
     def render(self, surface: Surface):
         if self.line or self.surface_background_width > 3:
@@ -146,7 +214,7 @@ class Terminal(RootObject):
         hour, minute, second = 0, 0, 0
         change = True
         try:
-            minute += int(line[:-2])
+            minute += float(line[:-2])
         except ValueError:
             try:
                 tmp = float(line[:-3])

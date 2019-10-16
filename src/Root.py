@@ -6,6 +6,7 @@ from Font import Font
 from handler.HandlerManager import HandlerManager
 from handler.Quit import Quit
 from handler.RenderStop import RenderStop
+from handler.ResponsiveColor import ResponsiveColor
 from manager.KeyboardManager import KeyboardManager
 from root_object.ResizaAlert import ResizeAlert
 from root_object.RootObjectManager import RootObjectManager
@@ -37,7 +38,7 @@ def init():
 
     pygame.init()
 
-    pygame.display.set_caption(Constants.PROJECT_NAME)
+    pygame.display.set_caption(f'{Constants.PROJECT_NAME} {Constants.PROJECT_VERSION}')
     pygame.display.set_icon(pygame.image.load(Constants.PROJECT_ICON))
 
     Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
@@ -49,6 +50,7 @@ def init():
 
     handler_manager.add(Quit(keyboard_manager, shutdown))
     handler_manager.add(RenderStop(keyboard_manager))
+    handler_manager.add(ResponsiveColor(state_manager))
 
     root_object_manager.add(
         Terminal(Constants.TEXT_COLOR, Font(Constants.NANUMSQUARE_REGULAR_FONT, 32, Constants.BACKGROUND_COLOR),

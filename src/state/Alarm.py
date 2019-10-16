@@ -8,12 +8,15 @@ from Positioning import center
 from root_object.ProgressCircle import ProgressCircle
 from root_object.Text import Text
 from root_object.Time import Time
+from sound.Sound import play_wav
 from state.Clock import Clock
 from state.State import State
 from state.StateManager import StateManager
 
 
 class Timer(State):
+    END_SOUND = './res/sound/ding.wav'
+
     def __init__(self, target: datetime, state_manager: StateManager):
         super().__init__()
 
@@ -31,6 +34,12 @@ class Timer(State):
 
         self.window_resize(*Display.size)
 
+    def recolor(self):
+        self.last_time.font.set_color(Constants.TEXT_COLOR)
+        self.target_time.set_color(Constants.TEXT_COLOR)
+        self.circle.set_color(Constants.CIRCLE_COLOR, Constants.TEXT_COLOR)
+        self.time.set_color(Constants.TEXT_COLOR)
+
     def tick(self):
         now = datetime.now()
 
@@ -44,6 +53,7 @@ class Timer(State):
 
         if Constants.progress >= 1:
             self.state_manager.state = Clock()
+            play_wav(Timer.END_SOUND)
 
     def render(self, surface: Surface):
         super().render(surface)

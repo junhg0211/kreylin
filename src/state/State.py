@@ -13,5 +13,8 @@ class State:
         for _object_ in self.objects:
             _object_.render(surface)
 
+    def recolor(self):
+        pass
+
     def window_resize(self, width: int, height: int):
         pass

@@ -13,6 +13,10 @@ class ProgressCircle(Circle):
         font = Font(Constants.NANUMSQUARE_LIGHT_FONT, 72, Constants.TEXT_COLOR)
         self.circle_progress = Text(0, self.center_y - font.size / 2, '', font)
 
+    def set_color(self, circle_color, text_color):
+        self.color = circle_color
+        self.circle_progress.font.set_color(text_color)
+
     def tick(self):
         super().tick()
 
