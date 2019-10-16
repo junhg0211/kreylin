@@ -16,6 +16,10 @@ class Text(RootObject):
         self.surface = None
         self.reload_surface()
 
+    def set_color(self, color):
+        self.font.set_color(color)
+        self.reload_surface()
+
     def reload_surface(self):
         self.surface = self.font.render(self.text)
 

@@ -17,6 +17,10 @@ class Time(RootObject):
         self.millisecond = Text(0, self.time.y + self.time.font.size, '',
                                 Font(Constants.NANUMSQUARE_REGULAR_FONT, 32, Constants.TEXT_COLOR))
 
+    def set_color(self, text_color):
+        self.time.font.set_color(text_color)
+        self.millisecond.font.set_color(text_color)
+
     def tick(self):
         now = datetime.now()
 

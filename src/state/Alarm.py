@@ -31,6 +31,12 @@ class Timer(State):
 
         self.window_resize(*Display.size)
 
+    def recolor(self):
+        self.last_time.font.set_color(Constants.TEXT_COLOR)
+        self.target_time.set_color(Constants.TEXT_COLOR)
+        self.circle.set_color(Constants.CIRCLE_COLOR, Constants.TEXT_COLOR)
+        self.time.set_color(Constants.TEXT_COLOR)
+
     def tick(self):
         now = datetime.now()
 

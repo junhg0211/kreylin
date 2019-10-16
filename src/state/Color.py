@@ -37,3 +37,6 @@ class Color(State):
             x, y = center_x, i * self.radius * 4 + y_offset
             self.objects.append(ColorSample(x, y, self.radius, *Color.SAMPLE_PALETTES[i]))
             self.objects.append(Text(x + self.font.size // 3, y - self.font.size * 1.5, chr(i + ord('G')), self.font))
+
+    def recolor(self):
+        self.font.set_color(Constants.TEXT_COLOR)

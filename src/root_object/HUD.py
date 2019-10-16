@@ -50,7 +50,10 @@ class HUD(RootObject):
                 f'State_ {self.state_manager.state.__class__.__name__} ({self.state_manager.state})\n' \
                 f'Object_ {len(self.root_object_manager.objects)}  Handler_ {len(self.handler_manager.handlers)}\n\n' \
                 f'Keyboard_ {self.keyboard_manager.keys.count(True)}\n\n' \
-                f'Global-Progress_ {Constants.progress:.030f}'
+                f'Global-Progress_ {Constants.progress:.030f}\n\n' \
+                f'Color -\nResponsible-Color_ {Constants.responsible_color}\n' \
+                f'Background_ {Constants.BACKGROUND_COLOR}\n' \
+                f'Circle_ {Constants.CIRCLE_COLOR}\nText_ {Constants.TEXT_COLOR}'
         except TypeError:
             pass
         else:

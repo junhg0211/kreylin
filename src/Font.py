@@ -8,7 +8,15 @@ class Font:
         self.size = size
         self.color = color
 
-        self.font = _Font_(self.font_path, self.size)
+        self.font = None
+        self.refresh_font()
 
     def render(self, text) -> Surface:
         return self.font.render(text, True, self.color)
+
+    def set_color(self, color: tuple):
+        self.color = color
+        self.refresh_font()
+
+    def refresh_font(self):
+        self.font = _Font_(self.font_path, self.size)
