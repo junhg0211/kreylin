@@ -2,11 +2,11 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-import Constants
-import Display
-from root_object.ProgressCircle import ProgressCircle
-from root_object.Time import Time
-from state.State import State
+import constants
+import display
+from root_object.progress_circle import ProgressCircle
+from root_object.time import Time
+from state.state import State
 
 
 class Clock(State):
@@ -14,16 +14,16 @@ class Clock(State):
     def __init__(self):
         super().__init__()
 
-        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR, Constants.progress)
+        self.circle = ProgressCircle(0, 0, 190, 20, constants.CIRCLE_COLOR, constants.progress)
 
         self.time = Time(0)
 
-        self.window_resize(*Display.size)
+        self.window_resize(*display.size)
 
     def tick(self):
         now = datetime.now()
 
-        Constants.progress = ((now.hour * 3600 + now.minute * 60 + now.second) + now.microsecond / 1000000) / 86400
+        constants.progress = ((now.hour * 3600 + now.minute * 60 + now.second) + now.microsecond / 1000000) / 86400
 
         self.circle.tick()
 

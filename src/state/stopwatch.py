@@ -2,14 +2,14 @@ from datetime import datetime, timedelta
 
 from pygame.surface import Surface
 
-import Constants
-import Display
-from Font import Font
-from Positioning import center
-from root_object.Circle import Circle
-from root_object.Text import Text
-from root_object.Time import Time
-from state.State import State
+import constants
+import display
+from font import Font
+from positioning import center
+from root_object.circle import Circle
+from root_object.text import Text
+from root_object.time import Time
+from state.state import State
 
 
 class Stopwatch(State):
@@ -19,10 +19,10 @@ class Stopwatch(State):
         if self.start_time is None:
             self.start_time = datetime.now()
 
-        self.circle = Circle(0, 0, 190, 20, Constants.CIRCLE_COLOR, Constants.progress)
-        font = Font(Constants.NANUMSQUARE_REGULAR_FONT, 72, Constants.TEXT_COLOR)
+        self.circle = Circle(0, 0, 190, 20, constants.CIRCLE_COLOR, constants.progress)
+        font = Font(constants.NANUMSQUARE_REGULAR_FONT, 72, constants.TEXT_COLOR)
         self.elapsed_time = Text(0, 0, '', font)
-        font2 = Font(Constants.NANUMSQUARE_LIGHT_FONT, 32, Constants.TEXT_COLOR)
+        font2 = Font(constants.NANUMSQUARE_LIGHT_FONT, 32, constants.TEXT_COLOR)
         self.elapsed_microsecond = Text(0, 0, '', font2)
         self.elapsed_days = Text(0, 0, '', font2)
 
@@ -31,27 +31,27 @@ class Stopwatch(State):
         self.time = Time(0)
 
         self.start_text: Text = Text(0, 0, str(self.start_time).split('.')[0],
-                                     Font(Constants.NANUMSQUARE_LIGHT_FONT, 32, Constants.TEXT_COLOR))
+                                     Font(constants.NANUMSQUARE_LIGHT_FONT, 32, constants.TEXT_COLOR))
 
-        self.window_resize(*Display.size)
+        self.window_resize(*display.size)
 
     # noinspection DuplicatedCode
     def tick(self):
         now = datetime.now()
         
-        Constants.progress = (now.second + now.microsecond / 1000000) / 60
+        constants.progress = (now.second + now.microsecond / 1000000) / 60
         self.circle.tick()
 
         delta = now - self.start_time
         self.elapsed_time.set_text(str(delta % timedelta(days=1)).split('.')[0])
-        self.elapsed_time.x = center(Display.size[0], self.elapsed_time.surface.get_width())
+        self.elapsed_time.x = center(display.size[0], self.elapsed_time.surface.get_width())
         self.elapsed_microsecond.set_text(f'.{delta.microseconds:06d}')
-        self.elapsed_microsecond.x = center(Display.size[0], self.elapsed_microsecond.surface.get_width())
+        self.elapsed_microsecond.x = center(display.size[0], self.elapsed_microsecond.surface.get_width())
 
         self.days = delta // timedelta(days=1)
         if self.days:
             self.elapsed_days.set_text(f'{self.days} day' + ('' if self.days == 1 else 's'))
-            self.elapsed_days.x = center(Display.size[0], self.elapsed_days.surface.get_width())
+            self.elapsed_days.x = center(display.size[0], self.elapsed_days.surface.get_width())
 
         self.time.tick()
 

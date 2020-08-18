@@ -2,9 +2,9 @@ from math import tau
 
 from pygame.surface import Surface
 
-import Constants
+import constants
 from drawshapes import arc
-from root_object.RootObject import RootObject
+from root_object.root_object import RootObject
 
 
 class Circle(RootObject):
@@ -17,7 +17,7 @@ class Circle(RootObject):
         self.progress = initial_progress
 
     def tick(self):
-        self.progress += (Constants.progress - self.progress) / Constants.FRICTION
+        self.progress += (constants.progress - self.progress) / constants.FRICTION
 
     def render(self, surface: Surface):
         arc(surface, self.color, (self.center_x, self.center_y), self.radius, end=self.progress * tau, width=self.width)

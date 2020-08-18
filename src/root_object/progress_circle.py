@@ -1,16 +1,16 @@
 from pygame.surface import Surface
 
-import Constants
-from Font import Font
-from root_object.Circle import Circle
-from root_object.Text import Text
+import constants
+from font import Font
+from root_object.circle import Circle
+from root_object.text import Text
 
 
 class ProgressCircle(Circle):
     def __init__(self, center_x, center_y, max_radius, width, color, initial_progress=0.0):
         super().__init__(center_x, center_y, max_radius, width, color, initial_progress)
 
-        font = Font(Constants.NANUMSQUARE_LIGHT_FONT, 72, Constants.TEXT_COLOR)
+        font = Font(constants.NANUMSQUARE_LIGHT_FONT, 72, constants.TEXT_COLOR)
         self.circle_progress = Text(0, self.center_y - font.size / 2, '', font)
 
     def set_color(self, circle_color, text_color):
@@ -20,7 +20,7 @@ class ProgressCircle(Circle):
     def tick(self):
         super().tick()
 
-        self.circle_progress.set_text('%.3f%%' % (Constants.progress * 100))
+        self.circle_progress.set_text('%.3f%%' % (constants.progress * 100))
         self.circle_progress.center_x()
 
     def render(self, surface: Surface):

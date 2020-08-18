@@ -1,6 +1,6 @@
 from pygame.surface import Surface
 
-from state.State import State
+from state.state import State
 
 
 class StateManager:

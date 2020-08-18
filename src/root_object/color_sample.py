@@ -1,9 +1,9 @@
 from pygame import gfxdraw
 from pygame.surface import Surface
 
-import Constants
-from Font import Font
-from root_object.RootObject import RootObject
+import constants
+from font import Font
+from root_object.root_object import RootObject
 
 
 class ColorSample(RootObject):
@@ -15,8 +15,8 @@ class ColorSample(RootObject):
         self.slider_color = slider_color
         self.text_color = text_color
 
-        self.white_font = Font(Constants.NANUMSQUARE_REGULAR_FONT, radius // 3, (255, 255, 255))
-        self.black_font = Font(Constants.NANUMSQUARE_REGULAR_FONT, radius // 3, (0, 0, 0))
+        self.white_font = Font(constants.NANUMSQUARE_REGULAR_FONT, radius // 3, (255, 255, 255))
+        self.black_font = Font(constants.NANUMSQUARE_REGULAR_FONT, radius // 3, (0, 0, 0))
 
         self.background_surface = self.get_colored_font_by_color(self.background_color) \
             .render('#%02X%02X%02X' % self.background_color)

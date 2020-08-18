@@ -2,16 +2,16 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-import Display, Constants
-from Font import Font
-from Positioning import center
-from root_object.ProgressCircle import ProgressCircle
-from root_object.Text import Text
-from root_object.Time import Time
-from sound.Sound import play_wav
-from state.Clock import Clock
-from state.State import State
-from state.StateManager import StateManager
+import display, constants
+from font import Font
+from positioning import center
+from root_object.progress_circle import ProgressCircle
+from root_object.text import Text
+from root_object.time import Time
+from sound.sound import play_wav
+from state.clock import Clock
+from state.state import State
+from state.state_manager import StateManager
 
 
 class Timer(State):
@@ -25,33 +25,33 @@ class Timer(State):
 
         self.start_time = datetime.now()
 
-        self.circle = ProgressCircle(0, 0, 190, 20, Constants.CIRCLE_COLOR, Constants.progress)
-        self.last_time = Text(0, 0, '', Font(Constants.NANUMSQUARE_REGULAR_FONT, 16, Constants.TEXT_COLOR))
+        self.circle = ProgressCircle(0, 0, 190, 20, constants.CIRCLE_COLOR, constants.progress)
+        self.last_time = Text(0, 0, '', Font(constants.NANUMSQUARE_REGULAR_FONT, 16, constants.TEXT_COLOR))
 
         self.time = Time(0)
         self.target_time: Text = Text(0, 0, str(self.target).split('.')[0],
-                                      Font(Constants.NANUMSQUARE_LIGHT_FONT, 32, Constants.TEXT_COLOR))
+                                      Font(constants.NANUMSQUARE_LIGHT_FONT, 32, constants.TEXT_COLOR))
 
-        self.window_resize(*Display.size)
+        self.window_resize(*display.size)
 
     def recolor(self):
-        self.last_time.font.set_color(Constants.TEXT_COLOR)
-        self.target_time.set_color(Constants.TEXT_COLOR)
-        self.circle.set_color(Constants.CIRCLE_COLOR, Constants.TEXT_COLOR)
-        self.time.set_color(Constants.TEXT_COLOR)
+        self.last_time.font.set_color(constants.TEXT_COLOR)
+        self.target_time.set_color(constants.TEXT_COLOR)
+        self.circle.set_color(constants.CIRCLE_COLOR, constants.TEXT_COLOR)
+        self.time.set_color(constants.TEXT_COLOR)
 
     def tick(self):
         now = datetime.now()
 
-        Constants.progress = (now - self.start_time) / (self.target - self.start_time)
+        constants.progress = (now - self.start_time) / (self.target - self.start_time)
         self.circle.tick()
 
         self.last_time.set_text(str(self.target - now))
-        self.last_time.x = center(Display.size[0], self.last_time.surface.get_width())
+        self.last_time.x = center(display.size[0], self.last_time.surface.get_width())
 
         self.time.tick()
 
-        if Constants.progress >= 1:
+        if constants.progress >= 1:
             self.state_manager.state = Clock()
             play_wav(Timer.END_SOUND)
 

@@ -1,6 +1,6 @@
 from random import random
 
-import Display
+import display
 from root_object.Image import Image
 
 
@@ -19,5 +19,5 @@ class RandomImage(Image):
         delta_x = (random() - 0.5) * self.speed
         delta_y = (random() - 0.5) * self.speed
 
-        self.x = limit(self.x + delta_x, 0, Display.size[0] - self.surface.get_width())
-        self.y = limit(self.y + delta_y, 0, Display.size[1] - self.surface.get_height())
+        self.x = limit(self.x + delta_x, 0, display.size[0] - self.surface.get_width())
+        self.y = limit(self.y + delta_y, 0, display.size[1] - self.surface.get_height())

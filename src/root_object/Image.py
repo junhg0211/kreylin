@@ -1,7 +1,7 @@
 from pygame import image
 from pygame.surface import Surface
 
-from root_object.RootObject import RootObject
+from root_object.root_object import RootObject
 
 
 class Image(RootObject):

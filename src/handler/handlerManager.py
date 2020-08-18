@@ -1,4 +1,4 @@
-from handler.Handler import Handler
+from handler.handler import Handler
 
 
 class HandlerManager:

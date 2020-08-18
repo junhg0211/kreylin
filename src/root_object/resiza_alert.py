@@ -2,11 +2,11 @@ from time import time
 
 from pygame.surface import Surface
 
-from Constants import TEXT_COLOR, NANUMSQUARE_BOLD_FONT, BACKGROUND_COLOR
-from Font import Font
-from Positioning import center
-from root_object.RootObject import RootObject
-from root_object.RootObjectManager import RootObjectManager
+from constants import TEXT_COLOR, NANUMSQUARE_BOLD_FONT, BACKGROUND_COLOR
+from font import Font
+from positioning import center
+from root_object.root_object import RootObject
+from root_object.root_object_manager import RootObjectManager
 
 
 class ResizeAlert(RootObject):

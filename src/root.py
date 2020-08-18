@@ -1,18 +1,18 @@
 import pygame
 
-import Constants
-import Display
-from Font import Font
-from handler.HandlerManager import HandlerManager
-from handler.Quit import Quit
-from handler.RenderStop import RenderStop
-from handler.ResponsiveColor import ResponsiveColor
-from manager.KeyboardManager import KeyboardManager
-from root_object.ResizaAlert import ResizeAlert
-from root_object.RootObjectManager import RootObjectManager
-from root_object.Terminal import Terminal
-from state.Clock import Clock
-from state.StateManager import StateManager
+import constants
+import display
+from font import Font
+from handler.handlerManager import HandlerManager
+from handler.quit import Quit
+from handler.render_stop import RenderStop
+from handler.responsive_color import ResponsiveColor
+from manager.keyboard_manager import KeyboardManager
+from root_object.resiza_alert import ResizeAlert
+from root_object.root_object_manager import RootObjectManager
+from root_object.terminal import Terminal
+from state.clock import Clock
+from state.state_manager import StateManager
 
 running = True
 clock = pygame.time.Clock()
@@ -38,10 +38,10 @@ def init():
 
     pygame.init()
 
-    pygame.display.set_caption(f'{Constants.PROJECT_NAME} {Constants.PROJECT_VERSION}')
-    pygame.display.set_icon(pygame.image.load(Constants.PROJECT_ICON))
+    pygame.display.set_caption(f'{constants.PROJECT_NAME} {constants.PROJECT_VERSION}')
+    pygame.display.set_icon(pygame.image.load(constants.PROJECT_ICON))
 
-    Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
+    display.window = pygame.display.set_mode(display.size, pygame.RESIZABLE)
 
     keyboard_manager = KeyboardManager()
     root_object_manager = RootObjectManager()
@@ -53,7 +53,7 @@ def init():
     handler_manager.add(ResponsiveColor(state_manager))
 
     root_object_manager.add(
-        Terminal(Constants.TEXT_COLOR, Font(Constants.NANUMSQUARE_REGULAR_FONT, 32, Constants.BACKGROUND_COLOR),
+        Terminal(constants.TEXT_COLOR, Font(constants.NANUMSQUARE_REGULAR_FONT, 32, constants.BACKGROUND_COLOR),
                  keyboard_manager, state_manager, root_object_manager, handler_manager, shutdown))
 
 
@@ -65,13 +65,13 @@ def handle():
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.VIDEORESIZE:
-            Display.size = event.dict['size']
-            if Display.full_screen:
-                Display.window = pygame.display.set_mode(Display.size, pygame.FULLSCREEN)
+            display.size = event.dict['size']
+            if display.full_screen:
+                display.window = pygame.display.set_mode(display.size, pygame.FULLSCREEN)
             else:
-                Display.window = pygame.display.set_mode(Display.size, pygame.RESIZABLE)
-            Display.resize_objects(root_object_manager, state_manager)
-            root_object_manager.add(ResizeAlert(*Display.size, root_object_manager))
+                display.window = pygame.display.set_mode(display.size, pygame.RESIZABLE)
+            display.resize_objects(root_object_manager, state_manager)
+            root_object_manager.add(ResizeAlert(*display.size, root_object_manager))
         elif event.type == pygame.KEYDOWN:
             keyboard_manager.key_pressed(event.key)
             keyboard_manager.pressed(event.unicode)
@@ -87,8 +87,8 @@ def tick():
 
 
 def render(surface):
-    if Display.render_enable:
-        Display.window.fill(Constants.BACKGROUND_COLOR)
+    if display.render_enable:
+        display.window.fill(constants.BACKGROUND_COLOR)
 
         state_manager.render(surface)
         root_object_manager.render(surface)
@@ -102,8 +102,8 @@ def main():
     while running:
         handle()
         tick()
-        render(Display.window)
+        render(display.window)
 
-        clock.tick(Display.fps)
+        clock.tick(display.fps)
 
     pygame.quit()

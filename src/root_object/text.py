@@ -1,9 +1,9 @@
 from pygame.surface import Surface
 
-import Display
-from Font import Font
-from Positioning import center
-from root_object.RootObject import RootObject
+import display
+from font import Font
+from positioning import center
+from root_object.root_object import RootObject
 
 
 class Text(RootObject):
@@ -28,10 +28,10 @@ class Text(RootObject):
         self.reload_surface()
 
     def center_x(self):
-        self.x = center(Display.size[0], self.surface.get_width())
+        self.x = center(display.size[0], self.surface.get_width())
 
     def center_y(self):
-        self.y = center(Display.size[1], self.surface.get_width())
+        self.y = center(display.size[1], self.surface.get_width())
 
     def render(self, surface: Surface):
         surface.blit(self.surface, (self.x, self.y))

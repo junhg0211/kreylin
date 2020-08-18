@@ -7,6 +7,6 @@ path.append('./src')
 if __name__ == '__main__':
     chdir(dirname(abspath("__ file__")))
 
-    from Root import main
+    from root import main
 
     main()

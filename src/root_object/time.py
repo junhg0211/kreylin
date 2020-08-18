@@ -2,10 +2,10 @@ from datetime import datetime
 
 from pygame.surface import Surface
 
-import Constants
-from Font import Font
-from root_object.RootObject import RootObject
-from root_object.Text import Text
+import constants
+from font import Font
+from root_object.root_object import RootObject
+from root_object.text import Text
 
 
 class Time(RootObject):
@@ -13,9 +13,9 @@ class Time(RootObject):
         self.y = y
 
         self.time = Text(0, self.y, '',
-                         Font(Constants.NANUMSQUARE_BOLD_FONT, 72, Constants.TEXT_COLOR))
+                         Font(constants.NANUMSQUARE_BOLD_FONT, 72, constants.TEXT_COLOR))
         self.millisecond = Text(0, self.time.y + self.time.font.size, '',
-                                Font(Constants.NANUMSQUARE_REGULAR_FONT, 32, Constants.TEXT_COLOR))
+                                Font(constants.NANUMSQUARE_REGULAR_FONT, 32, constants.TEXT_COLOR))
 
     def set_color(self, text_color):
         self.time.font.set_color(text_color)

@@ -3,7 +3,7 @@ from sys import platform
 
 from cx_Freeze import setup, Executable
 
-from Constants import PROJECT_VERSION, PROJECT_NAME
+from constants import PROJECT_VERSION, PROJECT_NAME
 
 environ['TCL_LIBRARY'] = r'.\venv_win\Lib\tcl8.6'
 environ['TK_LIBRARY'] = r'.\venv_win\Lib\tcl8.6'

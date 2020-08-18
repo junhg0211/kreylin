@@ -1,5 +1,5 @@
-from root_object.RandomImage import RandomImage
-from state.State import State
+from root_object.random_image import RandomImage
+from state.state import State
 
 
 class EasterEgg(State):

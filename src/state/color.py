@@ -1,10 +1,10 @@
-import Constants
-import Display
-from Font import Font
-from Positioning import center
-from root_object.ColorSample import ColorSample
-from root_object.Text import Text
-from state.State import State
+import constants
+import display
+from font import Font
+from positioning import center
+from root_object.color_sample import ColorSample
+from root_object.text import Text
+from state.state import State
 
 
 class Color(State):
@@ -18,10 +18,10 @@ class Color(State):
         super().__init__()
 
         self.radius = 50
-        center_x = center(Display.size[0], ColorSample.get_width_by_radius(self.radius))
-        y_offset = center(Display.size[1], self.radius * 9.6)
+        center_x = center(display.size[0], ColorSample.get_width_by_radius(self.radius))
+        y_offset = center(display.size[1], self.radius * 9.6)
 
-        self.font = Font(Constants.NANUMSQUARE_BOLD_FONT, self.radius // 3 * 2, Constants.TEXT_COLOR)
+        self.font = Font(constants.NANUMSQUARE_BOLD_FONT, self.radius // 3 * 2, constants.TEXT_COLOR)
 
         for i in range(len(Color.SAMPLE_PALETTES)):
             x, y = center_x, i * self.radius * 4 + y_offset
@@ -29,8 +29,8 @@ class Color(State):
             self.objects.append(Text(x + self.font.size // 3, y - self.font.size * 1.5, chr(i + ord('G')), self.font))
 
     def window_resize(self, width: int, height: int):
-        center_x = center(Display.size[0], ColorSample.get_width_by_radius(self.radius))
-        y_offset = center(Display.size[1], self.radius * 9.6)
+        center_x = center(display.size[0], ColorSample.get_width_by_radius(self.radius))
+        y_offset = center(display.size[1], self.radius * 9.6)
 
         self.objects = []
         for i in range(len(Color.SAMPLE_PALETTES)):
@@ -39,4 +39,4 @@ class Color(State):
             self.objects.append(Text(x + self.font.size // 3, y - self.font.size * 1.5, chr(i + ord('G')), self.font))
 
     def recolor(self):
-        self.font.set_color(Constants.TEXT_COLOR)
+        self.font.set_color(constants.TEXT_COLOR)

@@ -4,21 +4,21 @@ from time import time
 import pygame.draw
 from pygame.surface import Surface
 
-import Constants
-import Display
-from Font import Font
-from Positioning import center
-from handler.HandlerManager import HandlerManager
-from manager.KeyboardManager import KeyboardManager
-from root_object.HUD import HUD
-from root_object.RootObject import RootObject
-from root_object.RootObjectManager import RootObjectManager
-from state.Alarm import Timer
-from state.Clock import Clock
-from state.Color import Color
-from state.EasterEgg import EasterEgg
-from state.StateManager import StateManager
-from state.Stopwatch import Stopwatch
+import constants
+import display
+from font import Font
+from positioning import center
+from handler.handlerManager import HandlerManager
+from manager.keyboard_manager import KeyboardManager
+from root_object.hud import HUD
+from root_object.root_object import RootObject
+from root_object.root_object_manager import RootObjectManager
+from state.alarm import Timer
+from state.clock import Clock
+from state.color import Color
+from state.easter_egg import EasterEgg
+from state.state_manager import StateManager
+from state.stopwatch import Stopwatch
 
 
 class Terminal(RootObject):
@@ -68,10 +68,10 @@ class Terminal(RootObject):
 
         self.surface = self.font.render(self.line)
         self.surface_background_width += \
-            (self.surface.get_width() - self.surface_background_width) / Constants.FRICTION
+            (self.surface.get_width() - self.surface_background_width) / constants.FRICTION
 
-        start_time = center(Display.size[0], self.surface.get_width())
-        self.x += (start_time - self.x) / (Constants.FRICTION / 3)
+        start_time = center(display.size[0], self.surface.get_width())
+        self.x += (start_time - self.x) / (constants.FRICTION / 3)
 
         if self.keyboard_manager.start_keys[pygame.K_ESCAPE]:
             self.line = ''
@@ -132,25 +132,25 @@ class Terminal(RootObject):
             elif self.line[-2] == 'x':
                 self.shutdown()
             elif self.line[-2] == 'f':
-                Display.toggle_full_screen(self.root_object_manager, self.state_manager)
+                display.toggle_full_screen(self.root_object_manager, self.state_manager)
             elif self.line[-2] == 'h':
                 self.root_object_manager.hud = None if self.root_object_manager.hud else \
                     HUD(self.state_manager, self.root_object_manager, self.keyboard_manager, self.handler_manager)
             elif self.line[-2] == 'c':
-                Constants.responsible_color = False
+                constants.responsible_color = False
                 if len(self.line) >= 19:
-                    Constants.change_color(
+                    constants.change_color(
                         (int(self.line[:2], 16), int(self.line[2:4], 16), int(self.line[4:6], 16)),
                         (int(self.line[6:8], 16), int(self.line[8:10], 16), int(self.line[10:12], 16)),
                         (int(self.line[12:14], 16), int(self.line[14:16], 16), int(self.line[16:18], 16)))
                     self.state_manager.state = Clock()
                 elif len(self.line) >= 3:
                     if ord(self.line[-3].upper()) - ord('G') < len(Color.SAMPLE_PALETTES):
-                        Constants.change_color(*Color.SAMPLE_PALETTES[ord(self.line[-3].upper()) - ord('G')])
+                        constants.change_color(*Color.SAMPLE_PALETTES[ord(self.line[-3].upper()) - ord('G')])
                     self.state_manager.state = Clock()
                 else:
                     if isinstance(self.state_manager.state, Color):
-                        Constants.responsible_color = True
+                        constants.responsible_color = True
                         self.state_manager.state = Clock()
                     else:
                         self.state_manager.state = Color()
