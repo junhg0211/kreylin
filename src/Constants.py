@@ -1,6 +1,6 @@
 PROJECT_NAME = 'Kreylin'
 PROJECT_VERSION = 'alpha_1.3'
-PROJECT_ICON = './res/icon.png'
+PROJECT_ICON = './res/icon64.png'
 
 BACKGROUND_COLOR = (31, 33, 37)
 CIRCLE_COLOR = (253, 222, 89)

@@ -93,7 +93,7 @@ def ellipse_radius(surf, color, origin, x_radius, y_radius, width=0, n=64):
     x, y = origin
     if width >= min(x_radius, y_radius):
         width = 0
-    if width is 0:
+    if width == 0:
         end = TAU
     else:
         end = TAU * (n + 1) / float(n)
@@ -105,7 +105,7 @@ def ellipse_radius(surf, color, origin, x_radius, y_radius, width=0, n=64):
         yp = y - y_radius * math.cos(end * i / nf)
         pl.append((xp, yp))
 
-    if width is not 0:
+    if width != 0:
         x_radius -= width
         y_radius -= width
         for i in range(n):
