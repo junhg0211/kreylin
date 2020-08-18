@@ -12,12 +12,14 @@ base = None
 if platform == 'win32':
     base = 'Win32GUI'
 
+# noinspection SpellCheckingInspection
 build_options = {
     'packages': ('pygame', 'pyautogui', 'pyaudio', 'wave')
 }
 
 executable = [Executable('./__main__.py', base=base, icon='./res/icon.ico', targetName='Kreylin.exe')]
 
+# noinspection SpellCheckingInspection
 setup(
     name=PROJECT_NAME,
     version=PROJECT_VERSION,
