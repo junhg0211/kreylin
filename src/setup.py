@@ -22,7 +22,7 @@ setup(
     name=PROJECT_NAME,
     version=PROJECT_VERSION,
     description='Good Timer™',
-    author='NOA "Sch" M. Canepina I',
+    author='Sch Jeon',
     options={'build_exe': build_options},
     executables=executable,
     requires=['pygame', 'pyautogui', 'pyaudio', 'wave']
