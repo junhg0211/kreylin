@@ -4,7 +4,6 @@ import constants
 from positioning import linear
 from handler.handler import Handler
 
-
 # TODO 폰트 색상 반응형으로 만들기
 from state.state_manager import StateManager
 

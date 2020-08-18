@@ -6,12 +6,12 @@ class State:
         self.objects = []
 
     def tick(self):
-        for _object_ in self.objects:
-            _object_.tick()
+        for object_ in self.objects:
+            object_.tick()
 
     def render(self, surface: Surface):
-        for _object_ in self.objects:
-            _object_.render(surface)
+        for object_ in self.objects:
+            object_.render(surface)
 
     def recolor(self):
         pass

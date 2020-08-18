@@ -1,117 +1,26 @@
-# drawshapes.py
-# written by Jeffrey Kleykamp
+# https://stackoverflow.com/a/57457571
 
 import math
 import pygame
 
-TAU = 2 * math.pi
 
-
-def get_polygon(origin, radius, n, start=0, end=None):
-    out = []
-    x, y = origin
-    nf = float(n)
-    if end is None:
-        end = TAU
+# noinspection PyUnresolvedReferences
+def draw_arc(surface, x, y, r, th, start, stop, color):
+    points_outer = []
+    points_inner = []
+    n = round(r * abs(stop - start) / 20)
+    if n < 2:
+        n = 2
     for i in range(n):
-        xp = x + radius * math.sin(end * i / nf + start)
-        yp = y - radius * math.cos(end * i / nf + start)
-        out.append((xp, yp))
-    return out
-
-
-def reg_polygon(surf, color, origin, radius, width, n, start=0):
-    if width == 0 or width >= radius:
-        pl = get_polygon(origin, radius, n)
-        r = pygame.draw.polygon(surf, color, pl)
-        return r
-    else:
-        end = TAU * (n + 1) / float(n)
-        p1 = get_polygon(origin, radius, n + 1, start=start, end=end)
-        p2 = get_polygon(origin, radius - width, n + 1, start=start, end=end)
-        p2.reverse()
-        p1.extend(p2)
-        r = pygame.draw.polygon(surf, color, p1)
-        return r
-
-
-def circle(surf, color, origin, radius, width=0, n=64):
-    reg_polygon(surf, color, origin, radius, width, n, 0)
-
-
-def arc(surf, color, origin, radius, start=0, end=None, width=0, n=64):
-    if width == 0 or width >= radius * 0.5:
-        p2 = [origin]
-    else:
-        p2 = get_polygon(origin, radius - width, n, start=start, end=end)
-        p2.reverse()
-    p1 = get_polygon(origin, radius, n, start=start, end=end)
-    p1.extend(p2)
-    r = pygame.draw.polygon(surf, color, p1)
-    return r
-
-
-def wedge(surf, color, origin, radius, start=0, end=None, width=0, n=64):
-    if width == 0 or width >= radius * 0.5:
-        return arc(surf, color, origin, radius, start=start, end=end, width=0, n=n)
-    # does outside polygon
-    p1 = [origin]
-    p2 = get_polygon(origin, radius, n, start=start, end=end)
-    p3 = [origin]
-    p1.extend(p2)
-    p1.extend(p3)
-
-    # does inside polygon
-    x, y = origin
-    xp = x + width * math.sin(end * 0.5 + start)
-    yp = y - width * math.cos(end * 0.5 + start)
-    n_origin = (xp, yp)
-    p3 = [n_origin]
-    p2 = get_polygon(n_origin, radius - 2 * width, n, start=start, end=end)
-    p2.reverse()
-    p1.extend(p3)
-    p1.extend(p2)
-    p1.extend(p3)
-
-    # draws the full polygon
-    r = pygame.draw.polygon(surf, color, p1)
-    return r
-
-
-def ellipse(surf, color, rect, width=0, n=64):
-    # draws an ellipse that bounds the rect
-    x_radius = rect.width * 0.5
-    y_radius = rect.height * 0.5
-    origin = rect.center
-
-    return ellipse_radius(surf, color, origin, x_radius, y_radius, width=width, n=n)
-
-
-def ellipse_radius(surf, color, origin, x_radius, y_radius, width=0, n=64):
-    # draws an ellipse that has the two radii
-    pl = []
-    x, y = origin
-    if width >= min(x_radius, y_radius):
-        width = 0
-    if width == 0:
-        end = TAU
-    else:
-        end = TAU * (n + 1) / float(n)
-        n = n + 1
-    nf = float(n)
-
-    for i in range(n):
-        xp = x + x_radius * math.sin(end * i / nf)
-        yp = y - y_radius * math.cos(end * i / nf)
-        pl.append((xp, yp))
-
-    if width != 0:
-        x_radius -= width
-        y_radius -= width
-        for i in range(n):
-            xp = x + x_radius * math.sin(-end * i / nf)
-            yp = y - y_radius * math.cos(-end * i / nf)
-            pl.append((xp, yp))
-
-    r = pygame.draw.polygon(surf, color, pl)
-    return r
+        delta = i / (n - 1)
+        phi0 = start + (stop - start) * delta
+        x0 = round(x + r * math.cos(phi0))
+        y0 = round(y + r * math.sin(phi0))
+        points_outer.append([x0, y0])
+        phi1 = stop + (start - stop) * delta
+        x1 = round(x + (r - th) * math.cos(phi1))
+        y1 = round(y + (r - th) * math.sin(phi1))
+        points_inner.append([x1, y1])
+    points = points_outer + points_inner
+    pygame.gfxdraw.aapolygon(surface, points, color)
+    pygame.gfxdraw.filled_polygon(surface, points, color)

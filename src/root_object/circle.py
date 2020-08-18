@@ -1,9 +1,9 @@
-from math import tau
+from math import tau, pi
 
 from pygame.surface import Surface
 
 import constants
-from drawshapes import arc
+from drawshapes import draw_arc
 from root_object.root_object import RootObject
 
 
@@ -20,7 +20,8 @@ class Circle(RootObject):
         self.progress += (constants.progress - self.progress) / constants.FRICTION
 
     def render(self, surface: Surface):
-        arc(surface, self.color, (self.center_x, self.center_y), self.radius, end=self.progress * tau, width=self.width)
+        draw_arc(surface, self.center_x, self.center_y, self.radius, self.width, -pi/2, self.progress * tau - pi/2,
+                 self.color)
 
     def window_resize(self, width: int, height: int):
         self.center_x = width / 2
