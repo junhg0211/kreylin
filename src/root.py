@@ -3,12 +3,12 @@ import pygame
 import constants
 import display
 from font import Font
-from handler.handlerManager import HandlerManager
+from handler.handler_manager import HandlerManager
 from handler.quit import Quit
 from handler.render_stop import RenderStop
 from handler.responsive_color import ResponsiveColor
 from manager.keyboard_manager import KeyboardManager
-from root_object.resiza_alert import ResizeAlert
+from root_object.resize_alert import ResizeAlert
 from root_object.root_object_manager import RootObjectManager
 from root_object.terminal import Terminal
 from state.clock import Clock
@@ -65,13 +65,7 @@ def handle():
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.VIDEORESIZE:
-            display.size = event.dict['size']
-            if display.full_screen:
-                display.window = pygame.display.set_mode(display.size, pygame.FULLSCREEN)
-            else:
-                display.window = pygame.display.set_mode(display.size, pygame.RESIZABLE)
-            display.resize_objects(root_object_manager, state_manager)
-            root_object_manager.add(ResizeAlert(*display.size, root_object_manager))
+            display.resize(event.dict['size'], root_object_manager, state_manager, ResizeAlert)
         elif event.type == pygame.KEYDOWN:
             keyboard_manager.key_pressed(event.key)
             keyboard_manager.pressed(event.unicode)

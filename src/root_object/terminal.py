@@ -7,8 +7,9 @@ from pygame.surface import Surface
 import constants
 import display
 from font import Font
-from positioning import center
-from handler.handlerManager import HandlerManager
+from root_object.resize_alert import ResizeAlert
+from util import center
+from handler.handler_manager import HandlerManager
 from manager.keyboard_manager import KeyboardManager
 from root_object.hud import HUD
 from root_object.root_object import RootObject
@@ -156,6 +157,13 @@ class Terminal(RootObject):
                         self.state_manager.state = Color()
                 if self.root_object_manager.hud is not None:
                     self.root_object_manager.hud.recolor_background()
+            elif self.line[-2] == 's':
+                if 'x' in (resolution := self.line[:-2]):
+                    width, height = resolution.split('x')
+                    width, height = int(width), int(height)
+                    display.resize((width, height), self.root_object_manager, self.state_manager, ResizeAlert)
+                else:
+                    display.resize((480, 720), self.root_object_manager, self.state_manager, ResizeAlert)
             elif self.line.lower().startswith('uuddlrlrab'):
                 self.state_manager.state = EasterEgg()
 

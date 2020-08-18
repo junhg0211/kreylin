@@ -5,7 +5,7 @@ from pygame.surface import Surface
 import constants
 import display
 from font import Font
-from handler.handlerManager import HandlerManager
+from handler.handler_manager import HandlerManager
 from manager.keyboard_manager import KeyboardManager
 from root_object.root_object import RootObject
 from root_object.root_object_manager import RootObjectManager
