@@ -1,4 +1,4 @@
-from math import cos, sin
+from math import cos, sin, tau
 
 from pygame.gfxdraw import aapolygon, filled_polygon
 
@@ -13,6 +13,8 @@ def linear(value, m1, x1, m2, x2):
 
 def draw_arc(surface, x, y, r, th, start, stop, color):
     # from https://stackoverflow.com/a/57457571
+    stop %= tau
+
     points_outer = []
     points_inner = []
     n = round(r * abs(stop - start) / 20)
