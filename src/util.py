@@ -13,7 +13,7 @@ def linear(value, m1, x1, m2, x2):
 
 def draw_arc(surface, x, y, r, th, start, stop, color):
     # from https://stackoverflow.com/a/57457571
-    stop %= tau
+    stop = min(stop, tau)
 
     points_outer = []
     points_inner = []
