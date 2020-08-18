@@ -4,7 +4,7 @@ from pygame.surface import Surface
 
 import display, constants
 from font import Font
-from positioning import center
+from util import center
 from root_object.progress_circle import ProgressCircle
 from root_object.text import Text
 from root_object.time import Time

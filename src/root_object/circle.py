@@ -3,7 +3,7 @@ from math import tau, pi
 from pygame.surface import Surface
 
 import constants
-from drawshapes import draw_arc
+from util import draw_arc
 from root_object.root_object import RootObject
 
 

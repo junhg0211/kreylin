@@ -5,7 +5,7 @@ from pygame.surface import Surface
 import constants
 import display
 from font import Font
-from positioning import center
+from util import center
 from root_object.circle import Circle
 from root_object.text import Text
 from root_object.time import Time

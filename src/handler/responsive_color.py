@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import constants
-from positioning import linear
+from util import linear
 from handler.handler import Handler
 
 # TODO 폰트 색상 반응형으로 만들기

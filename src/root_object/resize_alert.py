@@ -4,7 +4,7 @@ from pygame.surface import Surface
 
 from constants import TEXT_COLOR, NANUMSQUARE_BOLD_FONT, BACKGROUND_COLOR
 from font import Font
-from positioning import center
+from util import center
 from root_object.root_object import RootObject
 from root_object.root_object_manager import RootObjectManager
 

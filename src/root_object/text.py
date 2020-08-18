@@ -2,7 +2,7 @@ from pygame.surface import Surface
 
 import display
 from font import Font
-from positioning import center
+from util import center
 from root_object.root_object import RootObject
 
 

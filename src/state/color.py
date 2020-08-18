@@ -1,7 +1,7 @@
 import constants
 import display
 from font import Font
-from positioning import center
+from util import center
 from root_object.color_sample import ColorSample
 from root_object.text import Text
 from state.state import State
