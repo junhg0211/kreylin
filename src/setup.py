@@ -5,8 +5,8 @@ from cx_Freeze import setup, Executable
 
 from constants import PROJECT_VERSION, PROJECT_NAME
 
-environ['TCL_LIBRARY'] = r'.\venv_win\Lib\tcl8.6'
-environ['TK_LIBRARY'] = r'.\venv_win\Lib\tcl8.6'
+environ['TCL_LIBRARY'] = r'C:\Users\junhg\AppData\Local\Programs\Python\Python38-32\tcl\tcl8.6'
+environ['TK_LIBRARY'] = r'C:\Users\junhg\AppData\Local\Programs\Python\Python38-32\tcl\tk8.6'
 
 base = None
 if platform == 'win32':
@@ -14,10 +14,10 @@ if platform == 'win32':
 
 # noinspection SpellCheckingInspection
 build_options = {
-    'packages': ('pygame', 'pyautogui', 'pyaudio', 'wave')
+    'includes': ('pygame', 'pyautogui', 'pyaudio', 'wave')
 }
 
-executable = [Executable('./__main__.py', base=base, icon='./res/icon.ico', targetName='Kreylin.exe')]
+executable = [Executable('./__main__.py', base=base, icon='./res/icon64.ico', targetName='Kreylin.exe')]
 
 # noinspection SpellCheckingInspection
 setup(
