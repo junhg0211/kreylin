@@ -47,7 +47,7 @@ class Timer(State):
         self.circle.tick()
 
         self.last_time.set_text(str(self.target - now))
-        self.last_time.x = center(display.size[0], self.last_time.surface.get_width())
+        self.last_time.x = center(display.size[0], self.last_time.width)
 
         self.time.tick()
 
@@ -67,6 +67,6 @@ class Timer(State):
         self.circle.window_resize(width, height)
         self.last_time.y = self.circle.center_y + self.circle.circle_progress.font.size / 2
         self.time.window_resize(width, height)
-        self.target_time.x = center(width, self.target_time.surface.get_width())
+        self.target_time.x = center(width, self.target_time.width)
         self.target_time.y = self.time.y - self.target_time.font.size
 

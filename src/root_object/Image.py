@@ -10,7 +10,9 @@ class Image(RootObject):
         self.y = y
         self.path = path
 
-        self.surface = image.load(path)
+        self._surface = image.load(path)
+        self.width = self._surface.get_width()
+        self.height = self._surface.get_height()
 
     def render(self, surface: Surface):
-        surface.blit(self.surface, (self.x, self.y))
+        surface.blit(self._surface, (self.x, self.y))

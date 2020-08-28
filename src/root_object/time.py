@@ -27,7 +27,7 @@ class Time(RootObject):
         self.time.set_text(str(now)[11:19])
         self.time.center_x()
         self.millisecond.set_text(('.%06d' % now.microsecond)[:5])
-        self.millisecond.x = self.time.x + self.time.surface.get_width() - self.millisecond.surface.get_width()
+        self.millisecond.x = self.time.x + self.time.width - self.millisecond.width
 
     def render(self, surface: Surface):
         self.time.render(surface)

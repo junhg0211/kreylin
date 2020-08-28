@@ -13,7 +13,9 @@ class Text(RootObject):
         self.text = text
         self.font: Font = font
 
-        self.surface = None
+        self._surface = None
+        self.width = 0
+        self.height = 0
         self.reload_surface()
 
     def set_color(self, color):
@@ -21,17 +23,19 @@ class Text(RootObject):
         self.reload_surface()
 
     def reload_surface(self):
-        self.surface = self.font.render(self.text)
+        self._surface = self.font.render(self.text)
+        self.width = self._surface.get_width()
+        self.height = self._surface.get_height()
 
     def set_text(self, text):
         self.text = text
         self.reload_surface()
 
     def center_x(self):
-        self.x = center(display.size[0], self.surface.get_width())
+        self.x = center(display.size[0], self.width)
 
     def center_y(self):
-        self.y = center(display.size[1], self.surface.get_width())
+        self.y = center(display.size[1], self.height)
 
     def render(self, surface: Surface):
-        surface.blit(self.surface, (self.x, self.y))
+        surface.blit(self._surface, (self.x, self.y))

@@ -44,14 +44,14 @@ class Stopwatch(State):
 
         delta = now - self.start_time
         self.elapsed_time.set_text(str(delta % timedelta(days=1)).split('.')[0])
-        self.elapsed_time.x = center(display.size[0], self.elapsed_time.surface.get_width())
+        self.elapsed_time.x = center(display.size[0], self.elapsed_time.width)
         self.elapsed_microsecond.set_text(f'.{delta.microseconds:06d}')
-        self.elapsed_microsecond.x = center(display.size[0], self.elapsed_microsecond.surface.get_width())
+        self.elapsed_microsecond.x = center(display.size[0], self.elapsed_microsecond.width)
 
         self.days = delta // timedelta(days=1)
         if self.days:
             self.elapsed_days.set_text(f'{self.days} day' + ('' if self.days == 1 else 's'))
-            self.elapsed_days.x = center(display.size[0], self.elapsed_days.surface.get_width())
+            self.elapsed_days.x = center(display.size[0], self.elapsed_days.width)
 
         self.time.tick()
 
@@ -71,7 +71,7 @@ class Stopwatch(State):
         self.elapsed_time.y = self.circle.center_y - self.elapsed_time.font.size / 2
         self.elapsed_microsecond.y = self.elapsed_time.y + self.elapsed_time.font.size
         self.time.window_resize(width, height)
-        self.start_text.x = center(width, self.start_text.surface.get_width())
+        self.start_text.x = center(width, self.start_text.width)
         self.start_text.y = self.time.y - self.start_text.font.size
-        self.elapsed_days.x = center(width, self.elapsed_days.surface.get_width())
+        self.elapsed_days.x = center(width, self.elapsed_days.width)
         self.elapsed_days.y = self.elapsed_time.y - self.elapsed_days.font.size
