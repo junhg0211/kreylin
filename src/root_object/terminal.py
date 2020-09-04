@@ -224,10 +224,10 @@ class Terminal(RootObject):
         hour, minute, second = 0, 0, 0
         change = True
         try:
-            minute += float(line[:-2])
+            minute += eval(line[:-2])
         except ValueError:
             try:
-                tmp = float(line[:-3])
+                tmp = eval(line[:-3])
             except ValueError:
                 change = False
             else:
