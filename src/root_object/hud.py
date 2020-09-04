@@ -9,6 +9,7 @@ from handler.handler_manager import HandlerManager
 from manager.keyboard_manager import KeyboardManager
 from root_object.root_object import RootObject
 from root_object.root_object_manager import RootObjectManager
+from state.alarm import Timer
 from state.state_manager import StateManager
 
 
@@ -48,7 +49,8 @@ class HUD(RootObject):
                 f'Display_ {display.size[0]}x{display.size[1]}@{fps:f}\nReal-Fps {self.real_fps} fps\n' \
                 f'Full-Screen_ {display.full_screen}\n\n' \
                 f'State_ {self.state_manager.state.__class__.__name__} ({self.state_manager.state})\n' \
-                f'Object_ {len(self.root_object_manager.objects)}  Handler_ {len(self.handler_manager.handlers)}\n\n' \
+                f'Object_ {len(self.root_object_manager.objects)}  Handler_ {len(self.handler_manager.handlers)}\n' \
+                f'Play-Sound_ {Timer.PLAY_SOUND}\n\n' \
                 f'Keyboard_ {self.keyboard_manager.keys.count(True)}\n\n' \
                 f'Global-Progress_ {constants.progress:.030f}\n\n' \
                 f'Color -\nResponsible-Color_ {constants.responsible_color}\n' \

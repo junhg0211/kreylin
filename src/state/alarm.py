@@ -17,6 +17,8 @@ from state.state_manager import StateManager
 class Timer(State):
     END_SOUND = './res/sound/ding.wav'
 
+    PLAY_SOUND: bool = False
+
     def __init__(self, target: datetime, state_manager: StateManager):
         super().__init__()
 
@@ -53,7 +55,8 @@ class Timer(State):
 
         if constants.progress >= 1:
             self.state_manager.state = Clock()
-            play_wav(Timer.END_SOUND)
+            if Timer.PLAY_SOUND:
+                play_wav(Timer.END_SOUND)
 
     def render(self, surface: Surface):
         super().render(surface)

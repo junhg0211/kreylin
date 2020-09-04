@@ -164,6 +164,8 @@ class Terminal(RootObject):
                     display.resize((width, height), self.root_object_manager, self.state_manager, ResizeAlert)
                 else:
                     display.resize((480, 720), self.root_object_manager, self.state_manager, ResizeAlert)
+            elif self.line[-2] == 'o':
+                Timer.PLAY_SOUND = not Timer.PLAY_SOUND
             elif self.line.lower().startswith('uuddlrlrab'):
                 self.state_manager.state = EasterEgg()
 
