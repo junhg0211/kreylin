@@ -225,7 +225,7 @@ class Terminal(RootObject):
         change = True
         try:
             minute += eval(line[:-2])
-        except ValueError:
+        except SyntaxError or ValueError:
             try:
                 tmp = eval(line[:-3])
             except ValueError:
