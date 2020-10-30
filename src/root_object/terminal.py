@@ -8,6 +8,7 @@ import constants
 import display
 from font import Font
 from root_object.resize_alert import ResizeAlert
+from sound.sound import play_wav
 from util import center
 from handler.handler_manager import HandlerManager
 from manager.keyboard_manager import KeyboardManager
@@ -166,6 +167,8 @@ class Terminal(RootObject):
                     display.resize((480, 720), self.root_object_manager, self.state_manager, ResizeAlert)
             elif self.line[-2] == 'o':
                 Timer.PLAY_SOUND = not Timer.PLAY_SOUND
+                if Timer.PLAY_SOUND:
+                    play_wav(Timer.END_SOUND)
             elif self.line.lower().startswith('uuddlrlrab'):
                 self.state_manager.state = EasterEgg()
 
