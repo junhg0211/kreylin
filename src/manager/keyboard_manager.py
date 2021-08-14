@@ -1,17 +1,14 @@
 class KeyboardManager:
     def __init__(self):
-        self.key_count = 512
-
-        self.keys = [False for _ in range(self.key_count)]
-
-        self.start_keys = None
-        self.end_keys = None
+        self.keys = set()
+        self.start_keys = set()
+        self.end_keys = set()
 
         self.buffer = ''
 
     def initialize(self):
-        self.start_keys = [False for _ in range(self.key_count)]
-        self.end_keys = [False for _ in range(self.key_count)]
+        self.start_keys.clear()
+        self.end_keys.clear()
 
     def pop_buffer(self):
         tmp = self.buffer
@@ -22,12 +19,20 @@ class KeyboardManager:
         if unicode != '\\':
             self.buffer += unicode
 
-    def key_pressed(self, key_code):
-        if key_code < self.key_count:
-            self.keys[key_code] = True
-            self.start_keys[key_code] = True
+    def start_key(self, key_code):
+        self.keys.add(key_code)
+        self.start_keys.add(key_code)
 
-    def key_released(self, key_code):
-        if key_code < self.key_count:
-            self.keys[key_code] = False
-            self.end_keys[key_code] = True
+    def end_key(self, key_code):
+        if key_code in self.keys:
+            self.keys.remove(key_code)
+        self.end_keys.add(key_code)
+
+    def is_pressed(self, key_code):
+        return key_code in self.keys
+
+    def is_start(self, key_code):
+        return key_code in self.start_keys
+
+    def is_end(self, key_code):
+        return key_code in self.end_keys

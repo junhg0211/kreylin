@@ -10,4 +10,4 @@ class RenderStop(Handler):
         self.keyboard_manager = keyboard_manager
 
     def tick(self):
-        display.render_enable = not self.keyboard_manager.keys[pygame.K_BACKSLASH]
+        display.render_enable = not self.keyboard_manager.is_pressed(pygame.K_BACKSLASH)

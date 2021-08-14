@@ -67,10 +67,10 @@ def handle():
         elif event.type == pygame.VIDEORESIZE:
             display.resize(event.dict['size'], root_object_manager, state_manager, ResizeAlert)
         elif event.type == pygame.KEYDOWN:
-            keyboard_manager.key_pressed(event.key)
+            keyboard_manager.start_key(event.key)
             keyboard_manager.pressed(event.unicode)
         elif event.type == pygame.KEYUP:
-            keyboard_manager.key_released(event.key)
+            keyboard_manager.end_key(event.key)
 
 
 def tick():

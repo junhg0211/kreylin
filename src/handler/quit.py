@@ -11,11 +11,11 @@ class Quit(Handler):
         self.shutdown = shutdown
 
     def tick(self):
-        if self.keyboard_manager.start_keys[pygame.K_F4]:
+        if self.keyboard_manager.is_start(pygame.K_F4):
             if platform == 'win32':
-                if self.keyboard_manager.keys[pygame.K_LALT] or self.keyboard_manager.keys[pygame.K_RALT]:
+                if self.keyboard_manager.is_pressed(pygame.K_LALT) or self.keyboard_manager.is_pressed(pygame.K_RALT):
                     self.shutdown()
-        if self.keyboard_manager.start_keys[pygame.K_q]:
+        if self.keyboard_manager.is_start(pygame.K_q):
             if platform == 'darwin':
-                if self.keyboard_manager.keys[pygame.K_LMETA] or self.keyboard_manager.keys[pygame.K_RMETA]:
+                if self.keyboard_manager.is_pressed(pygame.K_LMETA) or self.keyboard_manager.is_pressed(pygame.K_RMETA):
                     self.shutdown()

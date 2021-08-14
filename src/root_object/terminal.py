@@ -51,9 +51,9 @@ class Terminal(RootObject):
 
     def tick(self):
         loop_time = time()
-        if self.keyboard_manager.start_keys[pygame.K_BACKSPACE]:
+        if self.keyboard_manager.is_start(pygame.K_BACKSPACE):
             self.backspace_pressed_time = time()
-        if self.keyboard_manager.keys[pygame.K_BACKSPACE] and \
+        if self.keyboard_manager.is_pressed(pygame.K_BACKSPACE) and \
                 self.backspace_sleep_duration + self.backspace_pressed_time <= time():
             self.backspace_cycle_elapsed += loop_time - self.last_loop_time
             if self.backspace_cycle_elapsed >= self.backspace_repress_cycle:
@@ -75,12 +75,12 @@ class Terminal(RootObject):
         start_time = center(display.size[0], self.surface.get_width())
         self.x += (start_time - self.x) / (constants.FRICTION / 3)
 
-        if self.keyboard_manager.start_keys[pygame.K_ESCAPE]:
+        if self.keyboard_manager.is_start(pygame.K_ESCAPE):
             self.line = ''
         elif self.line == 'c\n':
             self.state_manager.state = Clock()
-        elif len(self.line) > 1 and (self.keyboard_manager.start_keys[pygame.K_RETURN] or
-                                     self.keyboard_manager.start_keys[pygame.K_KP_ENTER]):
+        elif len(self.line) > 1 and (self.keyboard_manager.is_start(pygame.K_RETURN)
+                                     or self.keyboard_manager.is_start(pygame.K_KP_ENTER)):
             self.line = self.line.lower()
 
             # noinspection SpellCheckingInspection
